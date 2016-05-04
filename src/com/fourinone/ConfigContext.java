@@ -130,7 +130,10 @@ public class ConfigContext
 		Double t = hours*3600*1000;
 		return t.longValue();
 	}
-	
+	/**
+	 * 获取职介所（Park） 服务器（SERVERS）地址信息
+	 * @return
+	 */
 	static String[][] getParkConfig()
 	{
 		String servers = getConfig("PARK","SERVERS",null);
@@ -231,19 +234,25 @@ public class ConfigContext
 	{
 		return Integer.parseInt(getConfig("COMPUTEMODE","MODE","DEFAULT"));
 	}
-	
+	/**
+	 * 根据配置组（PROPSROW）名称，属性名称获取配置信息
+	 * @param cfgname
+	 * @param cfgprop
+	 * @param cfgdesc
+	 * @return
+	 */
 	static String getConfig(String cfgname, String cfgprop, String cfgdesc)
 	{
 		return getConfig(cfgname, cfgprop, cfgdesc, null);
 	}
 	
 	/**
-	 * 通过配置名称，配置组，配置描述从配置文件中获取相应的值
+	 * 通过配置名称（<PROPSROW DESC="PARK">），属性名，配置描述从配置文件中获取相应的值
 	 * 如果值为空则返回传入的 默认值（defvalue）
-	 * @param cfgname
-	 * @param cfgprop
-	 * @param cfgdesc
-	 * @param defvalue
+	 * @param cfgname 配置名称
+	 * @param cfgprop  属性名
+	 * @param cfgdesc 属性名描述
+	 * @param defvalue 默认值
 	 * @return
 	 */
 	static String getConfig(String cfgname, String cfgprop, String cfgdesc, String defvalue)

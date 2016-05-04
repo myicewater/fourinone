@@ -92,8 +92,8 @@ public class XmlUtil
 	 * 读取xml文件，如果不存在生成默认配置文件
 	 * 
 	 * @param filePath 文件路径
-	 * @param PROPSROW_DESC
-	 * @param KEY_DESC
+	 * @param PROPSROW_DESC 类名（配置组名称<PROPSROW DESC="PARK">）
+	 * @param KEY_DESC 属性描述
 	 * @return
 	 */
 	public ArrayList getXmlObjectByFile(String filePath, String PROPSROW_DESC, String KEY_DESC)

@@ -61,7 +61,11 @@ public class BeanContext extends ServiceContext
 		parkcfg[0][1]=port!=0?(port+""):parkcfg[0][1];
 		startPark(host, port, parkcfg);
 	}
-	
+	/**
+	 * 
+	 * 启动职介所服务
+	 * 
+	 */
 	public static void startPark()//String configfile
 	{
 		String[][] parkcfg = ConfigContext.getParkConfig();
