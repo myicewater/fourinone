@@ -237,6 +237,15 @@ public class ConfigContext
 		return getConfig(cfgname, cfgprop, cfgdesc, null);
 	}
 	
+	/**
+	 * 通过配置名称，配置组，配置描述从配置文件中获取相应的值
+	 * 如果值为空则返回传入的 默认值（defvalue）
+	 * @param cfgname
+	 * @param cfgprop
+	 * @param cfgdesc
+	 * @param defvalue
+	 * @return
+	 */
 	static String getConfig(String cfgname, String cfgprop, String cfgdesc, String defvalue)
 	{
 		XmlUtil xu = new XmlUtil();

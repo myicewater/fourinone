@@ -87,6 +87,15 @@ public class XmlUtil
 		return getXmlObjectByFile(filePath, PROPSROW_DESC, null);	
 	}
 	
+	/**
+	 * 
+	 * 读取xml文件，如果不存在生成默认配置文件
+	 * 
+	 * @param filePath 文件路径
+	 * @param PROPSROW_DESC
+	 * @param KEY_DESC
+	 * @return
+	 */
 	public ArrayList getXmlObjectByFile(String filePath, String PROPSROW_DESC, String KEY_DESC)
 	{
 		/*filePath += ".xml";
@@ -125,6 +134,10 @@ public class XmlUtil
 		return al;	
 	}
 	
+	/**
+	 * 生成默认配置文件
+	 * @return
+	 */
 	private String getDefaultConfig(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");

@@ -4,6 +4,11 @@ import java.util.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * 
+ * @author ÷ÏÀÿ∫£
+ *
+ */
 public class XmlObjectCallback extends DefaultHandler
 {
 	private boolean textFlag = false;

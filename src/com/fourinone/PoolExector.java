@@ -9,9 +9,16 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 class PoolExector //java.io.Closeable
 {
+	/**
+	 * 使用可能的几个池线程之一执行每个提交的任务
+	 */
 	private static ThreadPoolExecutor tpe;//rm static, new everytime
 	private static ScheduledThreadPoolExecutor stpe;//rm static, new everytime
 	
+	/**
+	 * 初始化线程池执行器
+	 * @return
+	 */
 	static synchronized ThreadPoolExecutor tpe()//
 	{
 		if(tpe==null)
