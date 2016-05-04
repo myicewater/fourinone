@@ -5,7 +5,7 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * 
+ * SAX2 事件处理类
  * @author 朱素海
  *
  */
