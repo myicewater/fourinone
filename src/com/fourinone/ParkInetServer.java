@@ -22,6 +22,12 @@ import com.fourinone.FttpAdapter.FileProperty;
 
 public class ParkInetServer//not public
 {
+	/**
+	 *  Æô¶¯Http ·þÎñ
+	 * @param i ip
+	 * @param p port
+	 * @param q
+	 */
 	static void start(String i, int p, int q){
 		try{
 		    HttpServer hs = HttpServer.create(new InetSocketAddress(i,p),q);

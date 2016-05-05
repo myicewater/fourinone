@@ -7,22 +7,44 @@ import java.util.Iterator;
 import java.util.regex.Pattern;
 import java.util.Hashtable;
 import java.util.List;
-
+/**
+ * 继承于LinkedHashMap,实现了序列化接口
+ * @author 朱素海
+ *
+ */
 public class ObjValue extends LinkedHashMap implements ParkStatg
 {
+	/**
+	 * 添加
+	 * @param keyStr
+	 * @param valueStr
+	 */
 	public void setString(String keyStr, String valueStr){
 		super.put(keyStr, valueStr);
 	}
 
+	/**
+	 * 根据key 返回值
+	 * @param keyStr
+	 * @return
+	 */
 	public String getString(Object keyStr){
 		//System.out.println("ObjValue get");
 		return (String)super.get(keyStr);
 	}
-	
+	/**
+	 * 根据key 返回值
+	 * @param keyStr
+	 * @return
+	 */
 	public int getStringInt(String keyStr){
 		return Integer.parseInt(getString(keyStr));//?=null
 	}
-	
+	/**
+	 * 根据key 返回值
+	 * @param keyStr
+	 * @return
+	 */
 	public boolean getStringBool(String keyStr){
 		return Boolean.parseBoolean(getString(keyStr));//null return false
 	}
@@ -52,7 +74,11 @@ public class ObjValue extends LinkedHashMap implements ParkStatg
 		Object obj = super.get(keyStr);
 		return obj!=null?(boolean)obj:false;
 	}
-	
+	/**
+	 * 根据正则表达式返回所有匹配列Map
+	 * @param widelykey
+	 * @return
+	 */
 	public ObjValue getWidely(String widelykey){
 		ObjValue obj = new ObjValue();
 		for(Iterator iter=this.keySet().iterator();iter.hasNext();){
@@ -62,7 +88,11 @@ public class ObjValue extends LinkedHashMap implements ParkStatg
 		}
 		return obj;
 	}
-	
+	/**
+	 * 删除所有正则表达式匹配的项
+	 * @param widelykey
+	 * @return
+	 */
 	public ObjValue removeWidely(String widelykey){
 		ObjValue obj = new ObjValue();
 		
@@ -92,7 +122,10 @@ public class ObjValue extends LinkedHashMap implements ParkStatg
 	
 	/*public ObjValue getObjWidely(){
 	}*/
-	
+	/**
+	 * 返回所有key值
+	 * @return
+	 */
 	public ArrayList getObjNames(){
 		ArrayList al = new ArrayList();
 		for(Iterator iter=this.keySet().iterator();iter.hasNext();)
@@ -100,6 +133,11 @@ public class ObjValue extends LinkedHashMap implements ParkStatg
 		
 		return al;
 	}
+	/**
+	 * 返回所有值
+	 * @return
+	 */
+	
 	
 	public ArrayList getObjValues()
 	{

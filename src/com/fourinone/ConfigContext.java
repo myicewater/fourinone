@@ -154,7 +154,10 @@ public class ConfigContext
 	{
 		return getConfig("FTTP","SERVERS",null).split(":");
 	}
-	
+	/**
+	 * 获取webapp 配置信息
+	 * @return
+	 */
 	static String[] getInetConfig()
 	{
 		return getConfig("WEBAPP","SERVERS",null).split(":");
@@ -186,6 +189,10 @@ public class ConfigContext
 		return fl.getPath();
 	}
 	
+	/**
+	 * 获取工人 服务地址 配置信息
+	 * @return
+	 */
 	static String[] getWorkerConfig()
 	{
 		return getConfig("WORKER","SERVERS",null).split(":");

@@ -1,11 +1,21 @@
 package com.fourinone;
 
 //import java.io.Serializable;
-
+/**
+ * 用于封装参数，传递参数 的仓库
+ * @comment 朱素海comment
+ *
+ */
 public class WareHouse extends ObjValue{
 	public final static int NOTREADY=1,READY=0,EXCEPTION=-1;
+	/**
+	 * 状态：NOTREADY=1,READY=0,EXCEPTION=-1
+	 */
 	int status=READY;
 	//private Exception expt = null;
+	/**
+	 * 是否准备好
+	 */
 	private boolean ready = true;
 	private boolean mark = true;
 	
@@ -19,6 +29,11 @@ public class WareHouse extends ObjValue{
 		status = NOTREADY;
 	}
 	
+	/**
+	 * 构造方法，添加键值对(k,v)
+	 * @param k
+	 * @param v
+	 */
 	public WareHouse(Object k, Object v)
 	{
 		this();
@@ -45,7 +60,10 @@ public class WareHouse extends ObjValue{
 		this.ready = ready;
 		status = ready?READY:NOTREADY;
 	}*/
-	
+	/**
+	 * 设置状态
+	 * @param status
+	 */
 	synchronized void setReady(int status)//, Exception expt
 	{
 		this.ready = true;

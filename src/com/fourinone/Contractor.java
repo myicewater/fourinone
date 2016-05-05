@@ -9,13 +9,22 @@ public abstract class Contractor extends ContractorParallel
 {
 	private Contractor ctor;
 	WorkerLocal[] wks = null; 
-	
+	/**
+	 * 建立包工头跟另一个包工头之间链式关系，并返回链接的包工头
+	 * @param ctor 链接的包工头
+	 * @return
+	 */
 	public Contractor toNext(Contractor ctor)
 	{
 		this.ctor = ctor;
 		return ctor;
 	}
-	
+	/**
+	 * 发放任务，递归发放任务，直到最后一个包工头，上一个包工头的记过作为下一个包工头的输入
+	 * @param inhouse 仓库，输入
+	 * @param chainProcess 是否链式发放任务
+	 * @return
+	 */
 	public final WareHouse giveTask(WareHouse inhouse, boolean chainProcess)
 	{
 		WareHouse outhouse = giveTask(inhouse);

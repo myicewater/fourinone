@@ -4,6 +4,11 @@ public abstract class ContractorParallel extends ParallelService
 {
 	private int parallelPatternFlag = ConfigContext.getParallelPattern();
 	
+	/**
+	 * 根据工人类型获取工人
+	 * @param workerType
+	 * @return
+	 */
 	//from workservice or park: WorkerServiceProxy/WorkerParkProxy(static ParkProxy/ParkLocal; workerType/nodename doTask)
 	protected WorkerLocal[] getWaitingWorkers(String workerType)
 	{

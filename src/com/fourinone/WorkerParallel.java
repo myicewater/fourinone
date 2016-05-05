@@ -4,6 +4,13 @@ public abstract class WorkerParallel extends ParallelService
 {
 	protected int parallelPatternFlag = ConfigContext.getParallelPattern();
 	
+	/***
+	 * 进行任务等待
+	 * host ：工人监听IP
+	 * port：工人监听端口
+	 * 
+	 * workerType：工人类型
+	 */
 	//start workerservice or getlastest from park by keyid&workertype and invoke doTask get WareHouse to park and getlastest;
 	public void waitWorking(String host, int port, String workerType)
 	{

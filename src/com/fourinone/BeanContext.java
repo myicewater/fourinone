@@ -36,6 +36,13 @@ public class BeanContext extends ServiceContext
 		return getPark(host, port, parkcfg);
 	}
 	
+	/**
+	 * 启动职介所服务
+	 * @param host
+	 * @param port
+	 * @param sn
+	 * @param servers
+	 */
 	public static void startPark(String host, int port, String sn, String[][] servers)
 	{
 		try{
@@ -49,7 +56,12 @@ public class BeanContext extends ServiceContext
 			//e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 根据ip:port启动职介所服务
+	 * @param host
+	 * @param port
+	 * @param servers
+	 */
 	public static void startPark(String host, int port, String[][] servers)
 	{
 		startPark(host, port, ConfigContext.getParkService(), servers);
@@ -63,7 +75,7 @@ public class BeanContext extends ServiceContext
 	}
 	/**
 	 * 
-	 * 启动职介所服务
+	 * 根据默认配置，启动职介所服务
 	 * 
 	 */
 	public static void startPark()//String configfile
@@ -71,7 +83,11 @@ public class BeanContext extends ServiceContext
 		String[][] parkcfg = ConfigContext.getParkConfig();
 		startPark(parkcfg[0][0], Integer.parseInt(parkcfg[0][1]), parkcfg);
 	}
-	
+	/**
+	 * 
+	 * 启动web app 服务
+	 * 
+	 */
 	static void startInetServer()
 	{
 		String[] inetcfg = ConfigContext.getInetConfig();

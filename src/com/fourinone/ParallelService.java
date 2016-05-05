@@ -2,7 +2,11 @@ package com.fourinone;
 
 import java.util.List;
 import java.util.ArrayList;
-
+/**
+ * 并行服务类
+ * @author 朱素海
+ *
+ */
 abstract class ParallelService
 {
 	abstract public void waitWorking(String host, int port, String workerType);

@@ -2,7 +2,11 @@ package com.fourinone;
 
 import java.util.List;
 import java.util.ArrayList;
-
+/**
+ * 工人
+ * @comment 朱素海
+ *
+ */
 public class MigrantWorker extends WorkerParallel implements ParkStatg
 {
 	String host,workerType,workerjarname;
@@ -57,12 +61,16 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 			ob = ParkPatternExector.updateObjectBean(lastestOb, whouse);
 		}
 	}
-	
+	/**
+	 * 获取该工人外其他所有相同类型的工人
+	 */
 	protected Workman[] getWorkerElse()
 	{
 		return getWorkerElse(this.workerType);
 	}
-	
+	/**
+	 * 获取集群中workerType类型除 该工人以外的其他工人
+	 */
 	protected Workman[] getWorkerElse(String workerType)
 	{
 		/*List<Workman> wklist = new ArrayList<Workman>();
@@ -75,12 +83,16 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 		return wklist.toArray(new Workman[wklist.size()]);*/
 		return getWorkers(host, port, workerType);
 	}
-	
+	/**
+	 * 获取其他某个相同类型的工人，index为在集群中的序号
+	 */
 	protected Workman getWorkerIndex(int index)
 	{
 		return getWorkerIndex(this.workerType, index);
 	}
-	
+	/**
+	 * 获取某个工人，workerType为工人类型，index为在集群中的序号
+	 */
 	protected Workman getWorkerIndex(String workerType, int index)
 	{
 		//if(parallelPatternFlag!=1)
@@ -94,17 +106,23 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 		//}
 		//return null;
 	}
-	
+	/**
+	 * 获取集群中所有工人，包括该工人自己
+	 */
 	protected Workman[] getWorkerAll()
 	{
 		return getWorkerAll(this.workerType);
 	}
-	
+	/**
+	 * 获取集群中所有类型为workerType的工人
+	 */
 	protected Workman[] getWorkerAll(String workerType)
 	{
 		return getWorkers(null, 0, workerType);
 	}
-	
+	/**
+	 * 获取集群中的某个工人，workerType为工人类型，host为ip，port为端口号
+	 */
 	private Workman[] getWorkers(String host, int port, String workerType)
 	{
 		//System.out.println(host+":"+port);
@@ -124,7 +142,9 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 		}
 		return wklist.toArray(new Workman[wklist.size()]);
 	}	
-	
+	/**
+	 * 获取自己在集群中的位置序号
+	 */
 	protected int getSelfIndex()
 	{
 		if(selfIndex==-1)
@@ -139,7 +159,9 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 		}
 		return selfIndex;
 	}
-	
+	/**
+	 * 获取集群中的某个工人，workerType为工人类型，host为ip，port为端口号
+	 */
 	protected Workman getWorkerElse(String workerType, String host, int port)
 	{
 		if(this.host.equals(host)&&this.port==port)
@@ -163,7 +185,9 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 	{
 		return receive(inhouse);
 	}
-	
+	/**
+	 * 接收来自其他工人发送的内容
+	 */
 	protected boolean receive(WareHouse inhouse)
 	{
 		return true;
