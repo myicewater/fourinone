@@ -1,5 +1,9 @@
 package com.fourinone;
-
+/**
+ * 认证策略
+ * @author Administrator
+ *
+ */
 public enum AuthPolicy{
 	OP_READ(1),OP_READ_WRITE(3),OP_ALL(7);
 	private int policy;
@@ -9,6 +13,12 @@ public enum AuthPolicy{
 	public int getPolicy(){
 		return policy;
 	}
+	/**
+	 * 判断curAuth 是否包含 targetAuth
+	 * @param targetAuth
+	 * @param curAuth
+	 * @return
+	 */
 	public static boolean authIncluded(int targetAuth, int curAuth){
 		return ((targetAuth&curAuth)==targetAuth)?true:false;
 	}

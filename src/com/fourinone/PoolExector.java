@@ -6,7 +6,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-
+/**
+ * Ïß³Ì³ØÖ´ÐÐÆ÷
+ * @author Administrator
+ *
+ */
 class PoolExector //java.io.Closeable
 {
 	/**
