@@ -6,6 +6,11 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 //import java.rmi.ConnectException;
 
+/**
+ * ParkLocal ´úÀí
+ * @author ÖìËØº£
+ *
+ */
 final public class ParkProxy{
 	private static String sid = null;
 	private Park pk;

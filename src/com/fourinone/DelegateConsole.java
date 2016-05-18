@@ -5,7 +5,11 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 代理实例调用处理程序
+ * @author 朱素海
+ *
+ */
 public class DelegateConsole implements InvocationHandler
 {
 	private Object[] bs;
@@ -28,18 +32,34 @@ public class DelegateConsole implements InvocationHandler
 		return Proxy.newProxyInstance(aslist.get(0).getClassLoader(), aslist.toArray(), new DelegateConsole(bslist.toArray()));
 	}
 	*/
+	/**
+	 * 通过代理 建立as 和bs 的代理关系
+	 * @param as
+	 * @param bs
+	 * @return
+	 */
 	public static Object bind(Class[] as, Object... bs)
 	{
 		//System.out.println(as[0].getClass().getName());
 		//System.out.println(bs[0].getClass().getName());
 		return Proxy.newProxyInstance(as[0].getClassLoader(), as, new DelegateConsole(bs));
 	}
-	
+	/**
+	 * 绑定代理关系
+	 * @param a :代理源类
+	 * @param bs ：代理实例
+	 * @return
+	 */
 	public static <I> I bind(Class<I> a, Object... bs)
 	{
 		return (I)bind(new Class[]{a}, bs);
 	}
 
+	/**
+	 * 方法调用处理程序
+	 * 
+	 * 根据注解方法名字调用代理类相应的方法
+	 */
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
 	{

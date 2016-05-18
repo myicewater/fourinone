@@ -16,14 +16,34 @@ public class BeanContext extends ServiceContext
 	}
 	
 	//get all config msg
+	/**
+	 * 返回当前的职介所
+	 * 
+	 * 
+	 * 
+	 * @param host
+	 * @param port
+	 * @param sn
+	 * @param servers
+	 * @return
+	 */
 	public static ParkLocal getPark(String host, int port, String sn, String[][] servers){
 		return DelegateConsole.bind(ParkLocal.class, new ParkProxy(host, port, servers, sn));
 	}
-	
+	/**
+	 * 返回职介所
+	 * @param host
+	 * @param port
+	 * @param servers
+	 * @return
+	 */
 	public static ParkLocal getPark(String host, int port, String[][] servers){
 		return getPark(host, port, ConfigContext.getParkService(), servers);
 	}
-	
+	/**
+	 * 返回职介所默认情况
+	 * @return
+	 */
 	public static ParkLocal getPark(){
 		String[][] parkcfg = ConfigContext.getParkConfig();
 		return getPark(parkcfg[0][0], Integer.parseInt(parkcfg[0][1]), parkcfg);//input serverconfiglist string[][]
@@ -271,6 +291,13 @@ public class BeanContext extends ServiceContext
 		return start(env, null, params);
 	}
 	
+	/**
+	 * 创建并启动进程
+	 * @param env
+	 * @param fa
+	 * @param params
+	 * @return
+	 */
 	public static int start(Map env, FileAdapter fa, String... params){
 		ProcessBuilder pb = new ProcessBuilder(params);
 		pb.redirectErrorStream(true);

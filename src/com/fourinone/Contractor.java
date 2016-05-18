@@ -131,7 +131,9 @@ public abstract class Contractor extends ContractorParallel
 	protected final WareHouse[] doTaskBatch(WareHouse wh){
 		return doTaskBatch(wks, wh);
 	}
-	
+	/**
+	 * 分别调用工人的doTask
+	 */
 	protected final WareHouse[] doTaskBatch(WorkerLocal[] wks, WareHouse wh){
 		WareHouse[] hmarr = new WareHouse[wks.length];
 		for(int i=0,j=0;j<hmarr.length;){

@@ -21,9 +21,16 @@ import com.fourinone.FileBatch.TryIntWriteAdapter;
 import java.util.Date;
 import java.io.FilenameFilter;
 import java.nio.channels.OverlappingFileLockException;
-
+/**
+ * 继承File类
+ * @author 朱素海
+ *
+ */
 public class FileAdapter extends File
 {
+	/**
+	 * 随机文件读取写入类
+	 */
 	private RandomAccessFile raf = null;
 	private FileChannel fc = null;
 	private ByteBuffer mbread=null,mbwrite=null;
