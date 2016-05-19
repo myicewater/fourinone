@@ -74,11 +74,23 @@ final public class ParkProxy{
 		}
 	}
 	
+	/**
+	 * 创建一个域，节点随机生成
+	 * @param domain
+	 * @param obj 序列
+	 * @return
+	 */
 	@Delegate(interfaceName="com.fourinone.ParkLocal",methodName="create",policy=DelegatePolicy.Implements)
 	public ObjectBean create(String domain, Serializable obj){
 		return put(domain, BeanContext.getNumber(), obj);//System.nanoTime()
 	}
-	
+	/**
+	 * 创建域
+	 * @param domain
+	 * @param node
+	 * @param obj
+	 * @return
+	 */
 	@Delegate(interfaceName="com.fourinone.ParkLocal",methodName="create",policy=DelegatePolicy.Implements)
 	public ObjectBean put(String domain, String node, Serializable obj){
 		return put(domain, node, obj, AuthPolicy.OP_ALL);
@@ -98,7 +110,16 @@ final public class ParkProxy{
 	public ObjectBean put(String domain, String node, Serializable obj, AuthPolicy auth, boolean heartbeat){
 		return put(domain, node, obj, auth, heartbeat, 0);
 	}
-	
+	/**
+	 * 
+	 * @param domain 域名
+	 * @param node 节点名
+	 * @param obj 序列名
+	 * @param auth 权限
+	 * @param heartbeat 心跳
+	 * @param i 
+	 * @return
+	 */
 	public ObjectBean put(String domain, String node, Serializable obj, AuthPolicy auth, boolean heartbeat, int i)
 	{
 		ObjectBean ob=null;

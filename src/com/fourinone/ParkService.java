@@ -10,7 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.Date;
-
+/**
+ * 
+ * @author ÷ÏÀÿ∫£
+ *
+ */
 public class ParkService extends MementoService implements Park
 {
 	private ParkObjValue parkinfo = new ParkObjValue();

@@ -5,6 +5,12 @@ import java.io.Serializable;
 
 public interface ParkLocal
 {
+	/**
+	 * ¥¥Ω®”Ú
+	 * @param domain
+	 * @param obj
+	 * @return
+	 */
 	public ObjectBean create(String domain, Serializable obj);
 	public ObjectBean create(String domain, String node, Serializable obj);
 	public ObjectBean create(String domain, String node, Serializable obj, AuthPolicy auth);

@@ -2,7 +2,12 @@ package com.fourinone;
 
 import java.util.ResourceBundle;
 import java.util.MissingResourceException;
-
+/**
+ * 资源Bean
+ * 读取本地配置文件，支持国际化，就是这么牛逼轰轰轰轰的
+ * @author 朱素海
+ *
+ */
 public class ResourceBean 
 {
 	protected String resourcesName;
@@ -14,7 +19,11 @@ public class ResourceBean
 	{
 		bundle = ResourceBundle.getBundle(resourcesName);
 	}
-	
+	/**
+	 * 根据键值读取值
+	 * @param keyWord
+	 * @return
+	 */
 	public String getString(String keyWord)
 	{		
 		String str = "";

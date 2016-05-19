@@ -4,7 +4,11 @@ import java.util.Iterator;
 import java.util.regex.Pattern;
 import java.util.List;
 import java.util.ArrayList;
-
+/**
+ * 继承链式哈希表、支持序列化
+ * @author 朱素海
+ *
+ */
 public class ParkObjValue extends ObjValue
 {	
 	public ObjValue getNodeWidely(String nodekey){
@@ -204,6 +208,11 @@ public class ParkObjValue extends ObjValue
 		return ov;
 	}
 	
+	/**
+	 * 检查命名是否规范，只包含字符数字和下划线
+	 * @param keyname
+	 * @return
+	 */
 	public static boolean checkGrammar(String keyname){
 		if(keyname!=null&&Pattern.matches("^[a-z0-9A-Z_-]+$", keyname))
 			return true;
@@ -213,10 +222,22 @@ public class ParkObjValue extends ObjValue
 		}
 	}
 	
+	/**
+	 * 检查域名和节点命名是否合法
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public static boolean checkGrammar(String domain, String node){
 		return checkGrammar(domain)&&checkGrammar(node);
 	}
-	
+	/**
+	 * 检查序列值是否合法，序列值（obj）是否为空
+	 * @param domain
+	 * @param node
+	 * @param obj
+	 * @return
+	 */
 	public static boolean checkGrammar(String domain, String node, Object obj){
 		if(obj==null)
 			LogUtil.info("[checkGrammar]", "[error]", obj);

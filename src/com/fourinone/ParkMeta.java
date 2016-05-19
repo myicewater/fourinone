@@ -1,5 +1,9 @@
 package com.fourinone;
-
+/**
+ * 属性配置文件缓存类
+ * @author 朱素海
+ *
+ */
 public class ParkMeta
 {
 	private static String YSJ,YBB,YCJZ,YCIP,YCSJ,YQX,YSX,YGXZ,YGIP,YGSJ,SXXT;

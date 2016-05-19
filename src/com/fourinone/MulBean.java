@@ -7,18 +7,28 @@ import java.io.Reader;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-
+/**
+ * 配置文件工具类
+ * @author 朱素海
+ *
+ */
 public class MulBean extends ResourceBean
 {
 	private String nativeLangCode;
-	
+	/**
+	 * 根据不同编码读取配置文件
+	 * @param langCode
+	 */
 	public MulBean(String langCode)
 	{
 		super();
 		resourcesName = "META-INF/config";
 		init(langCode);
 	}
-	
+	/**
+	 * 根据不同编码初始化配置文件资源
+	 * @param langCode
+	 */
 	public void init(String langCode)
 	{
 		if(langCode==null)
@@ -41,12 +51,19 @@ public class MulBean extends ResourceBean
 			bundle = ResourceBundle.getBundle(resourcesName, Locale.TAIWAN);//new Locale("zh", "TW");
 		}
 	}
-	
+	/**
+	 * 根据key获取资源文件值，没有获取到则返回keyWord
+	 */
 	public String getString(String keyWord)
 	{		
 		return getString(keyWord, "");
 	}
-	
+	/**
+	 * 根据key获取资源文件值，没有获取到返回topStr+keyWord
+	 * @param keyWord
+	 * @param topStr
+	 * @return
+	 */
 	public String getString(String keyWord, String topStr)
 	{		
 		String str = "";
@@ -62,7 +79,10 @@ public class MulBean extends ResourceBean
 		}		
 		return str;		
 	}
-	
+	/**
+	 * 返回空格的ISO-8859-1编码
+	 * @return
+	 */
 	public String getSpace()
 	{
 		String space = "";
@@ -71,7 +91,11 @@ public class MulBean extends ResourceBean
 	
 		return space;
 	}
-	
+	/**
+	 * 返回文件内容
+	 * @param relativeUri
+	 * @return
+	 */
 	public String getFileString(String relativeUri){
 		StringBuffer sb = new StringBuffer();
 		try{

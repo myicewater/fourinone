@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import java.util.Hashtable;
 import java.util.List;
 /**
- * 继承于LinkedHashMap,实现了序列化接口
+ * 继承于LinkedHashMap,实现了序列化接口,可以看做是HashMap，有自己的方法
  * @author 朱素海
  *
  */
@@ -110,11 +110,19 @@ public class ObjValue extends LinkedHashMap implements ParkStatg
 		
 		return obj;
 	}
-	
+	/**
+	 * 添加键值对
+	 * @param keyStr
+	 * @param valueObj
+	 */
 	public void setObj(String keyStr, Object valueObj){
 		super.put(keyStr, valueObj);
 	}
-
+	/**
+	 * 根据key获取值
+	 * @param keyStr
+	 * @return
+	 */
 	public Object getObj(String keyStr){
 		//System.out.println("ObjValue getObj");
 		return super.get(keyStr);

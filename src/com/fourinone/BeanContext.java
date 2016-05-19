@@ -263,7 +263,12 @@ public class BeanContext extends ServiceContext
 		return DelegateConsole.bind(CacheLocal.class, new CacheProxy(host, port));
 		//return DelegateHandle.bind(CacheLocal.class, CacheProxy.class);
 	}
-	
+	/**
+	 * 启动缓存服务
+	 * @param host
+	 * @param port
+	 * @param servers
+	 */
 	public static void startCache(String host, int port, String[][] servers)
 	{
 		startPark(host, port, ConfigContext.getCacheService(), servers);
@@ -417,7 +422,10 @@ public class BeanContext extends ServiceContext
 	public static void unLock(ObjectBean ob){
 		ParkPatternExector.getParkLocal().delete(ob.getDomain(),ob.getNode());
 	}
-	
+	/**
+	 * 通过UUID生成随机字符串，不包含 -
+	 * @return
+	 */
 	public static String getNumber(){
 		return UUID.randomUUID().toString().replace("-", "");
 	}

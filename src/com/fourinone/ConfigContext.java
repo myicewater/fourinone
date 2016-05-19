@@ -8,7 +8,13 @@ import java.io.File;
 
 public class ConfigContext
 {
+	/**
+	 * 配置文件读取类
+	 */
 	private static MulBean mb = null;
+	/**
+	 * 初始化值
+	 */
 	private static String QSXYSJ=null,YMMZ=null,RZDY=null,YCDYXY=null,DMY=null,AQCL=null,POLICY=null,LSML=null,SERVICEONWORKER=null;
 	private static long TMOT=-1;
 	static String configFile = new File("").getAbsolutePath()+File.separator+"config.xml";
@@ -17,52 +23,80 @@ public class ConfigContext
 	private static int HASHCAPACITY=-1;
 	private static String DATAROOT;
 	
+	/**
+	 * 获取存储键值对 键 最大长度，单位M
+	 * @return
+	 */
 	static long getKEYLENTH(){
 		if(KEYLENTH==-1)
 			KEYLENTH = new Long(getConfig("COOLHASH","KEYLENTH","B","256"));
 		return KEYLENTH;
 	}
-	
+	/**
+	 * 获取存储键值对 值 最大长度，单位M
+	 * @return
+	 */
 	static long getVALUELENGTH(){
 		if(VALUELENGTH==-1)
 			VALUELENGTH = new Long(getConfig("COOLHASH","VALUELENGTH","M","2"));
 		return VALUELENGTH;
 	}
-	
+	/**
+	 * 获取键值对 区域最大长度？？
+	 * @return
+	 */
 	static long getREGIONLENGTH(){
 		if(REGIONLENGTH==-1)
 			REGIONLENGTH = new Long(getConfig("COOLHASH","REGIONLENGTH","M","2"));
 		return REGIONLENGTH;
 	}
-	
+	/**
+	 * 获取键值对加载最大长度 ，单位兆
+	 * @return
+	 */
 	static long getLOADLENGTH(){
 		if(LOADLENGTH==-1)
 			LOADLENGTH = new Long(getConfig("COOLHASH","LOADLENGTH","M","64"));
 		return LOADLENGTH;
 	}
-	
+	/**
+	 * 获取coolhash 最大容量
+	 * @return
+	 */
 	static int getHASHCAPACITY(){
 		if(HASHCAPACITY==-1)
 			HASHCAPACITY = new Integer(getConfig("COOLHASH","HASHCAPACITY",null,"1000000"));
 		return HASHCAPACITY;
 	}
-	
+	/**
+	 * 获取coolhash 数据跟路径
+	 * @return
+	 */
 	static String getDATAROOT(){
 		if(DATAROOT==null)
 			DATAROOT = getConfig("COOLHASH","DATAROOT",null,"data");
 		return DATAROOT;
 	}
-	
+	/**
+	 * 读取配置文件，返回工具类
+	 * @return
+	 */
 	static MulBean getMulBean(){
 		return mb!=null?mb:new MulBean("ISO-8859-1");
 	}
-	
+	/**
+	 * 根据key获取值
+	 * @return
+	 */
 	static String getQSXYSJ(){
 		if(QSXYSJ==null)
 			QSXYSJ = getMulBean().getString("QSXYSJ");
 		return QSXYSJ;
 	}
-
+	/**
+	 * 根据key获取值
+	 * @return
+	 */
 	static String getYMMZ(){
 		if(YMMZ==null)
 			YMMZ = getMulBean().getString("YMMZ");
@@ -104,27 +138,47 @@ public class ConfigContext
 			LSML = getMulBean().getString("LSML");
 		return LSML;
 	}
-	
+	/**
+	 * 根据属性名获取属性值
+	 * @param propstr
+	 * @return
+	 */
 	static String getProp(String propstr){
 		return getMulBean().getString(propstr);
 	}
-	
+	/**
+	 * 获取rmi调用地址
+	 * @param ym
+	 * @param dk
+	 * @param mc
+	 * @return
+	 */
 	static String getProtocolInfo(String ym, int dk, String mc){
 		return getYCDYXY()+ym+":"+dk+"/"+mc;
 	}
-	
+	/**
+	 * 获取工人超时时间
+	 * @return
+	 */
 	static long getTMOT(){
 		if(TMOT==-1)
 			TMOT = getSecTime(new Double(getConfig("WORKER","TIMEOUT","TRUE","0")));
 		return TMOT;
 	}
-	
+	/**
+	 * 获取服务标志
+	 * @return
+	 */
 	static boolean getServiceFlag(){
 		if(SERVICEONWORKER==null)
 			SERVICEONWORKER = getConfig("WORKER","SERVICE", null, "false");
 		return Boolean.parseBoolean(SERVICEONWORKER);
 	}	
-		
+	/**
+	 * 小时转化成秒	
+	 * @param hours
+	 * @return
+	 */
 	static long getSecTime(Double hours)
 	{
 		Double t = hours*3600*1000;
@@ -203,7 +257,10 @@ public class ConfigContext
 		String servers = getConfig("CACHE","SERVERS",null);
 		return getServerFromStr(servers);
 	}
-	
+	/**
+	 * 获取缓存配置信息
+	 * @return
+	 */
 	static String getCacheService()
 	{
 		return getConfig("CACHE","SERVICE",null);

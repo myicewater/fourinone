@@ -3,7 +3,12 @@ package com.fourinone;
 import java.util.List;
 import java.rmi.RemoteException;
 import java.io.Serializable;
-
+/**
+ * 接口支持序列化
+ * 支持rmi远程调用
+ * @author 朱素海
+ *
+ */
 public interface Park extends ParkActive
 {
 	//public <T extends java.io.Serializable> ObjValue create(String domain, String node, T obj, String sessionid, int auth, boolean heartbeat) throws RemoteException;//acl
