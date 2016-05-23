@@ -9,7 +9,9 @@ public class ParkGroup{
 		//initGroups();//input Groups
 		this.groups = groups;
 	}
-	
+	/**
+	 * 初始化集群参数
+	 */
 	private void initGroups()
 	{
 		ObjValue group1 = new ObjValue();
@@ -46,6 +48,10 @@ public class ParkGroup{
 		return i;
 	}
 	*/
+	/***
+	 * 返回唯一Id，把时间戳转换成16进制，位数变短，包含了英文
+	 * @return
+	 */
 	public static String getKeyId(){
 		return Long.toHexString(System.currentTimeMillis()).toUpperCase()+"-"+Long.toHexString(System.nanoTime()).toUpperCase();
 	}

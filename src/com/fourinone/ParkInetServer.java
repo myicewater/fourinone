@@ -19,7 +19,14 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.Compilable;
 import com.fourinone.FttpAdapter.FileProperty;
-
+/**
+ * 协调服务
+ * 
+ * 所谓协调服务也就启动了一个HttpServer
+ * 
+ * @author 朱素海
+ *
+ */
 public class ParkInetServer//not public
 {
 	/**
@@ -99,6 +106,11 @@ public class ParkInetServer//not public
 	}
 }
 
+/**
+ * httpserver 处理器
+ * @author 朱素海
+ *
+ */
 class HandlerAll implements HttpHandler
 {
 	public void handle(HttpExchange exchange) throws IOException

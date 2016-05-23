@@ -31,7 +31,7 @@ public class BeanContext extends ServiceContext
 		return DelegateConsole.bind(ParkLocal.class, new ParkProxy(host, port, servers, sn));
 	}
 	/**
-	 * 返回职介所
+	 * 返回职介所、协调服务
 	 * @param host
 	 * @param port
 	 * @param servers
@@ -57,7 +57,7 @@ public class BeanContext extends ServiceContext
 	}
 	
 	/**
-	 * 启动职介所服务
+	 * 启动职介所服务（协调服务），httpserver
 	 * @param host
 	 * @param port
 	 * @param sn
@@ -155,6 +155,9 @@ public class BeanContext extends ServiceContext
 		}
 	}
 	
+	/**
+	 * 读取fttp配置，启动fttp文件服务
+	 */
 	public static void startFttpServer(){//root
 		String[] fttpcfg = ConfigContext.getFttpConfig();
 		startFttpServer(fttpcfg[0], Integer.parseInt(fttpcfg[1]));
@@ -164,6 +167,11 @@ public class BeanContext extends ServiceContext
 		startFttpServer(host, FttpMigrantWorker.FTTPPORT);
 	}
 	
+	/**
+	 * 启动fttp服务
+	 * @param host
+	 * @param port
+	 */
 	public static void startFttpServer(String host, int port){
 		new FttpMigrantWorker().waitWorking(host,port,FttpMigrantWorker.FTTPSN);
 	}

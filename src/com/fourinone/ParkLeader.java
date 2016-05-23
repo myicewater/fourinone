@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.rmi.ConnectException;
 import java.rmi.RemoteException;
-
+/**
+ * 协同 领导
+ * @author 朱素海
+ *
+ */
 public class ParkLeader{
 	boolean ismaster = false;
 	boolean alwaystry = false;
@@ -52,7 +56,10 @@ public class ParkLeader{
 		}
 		return pk;
 	}*/
-	
+	/**
+	 * 返回 领导协同服务
+	 * @return
+	 */
 	protected Park getLeaderPark()
 	{
 		LogUtil.info("", "", "getLeaderPark...................");
@@ -266,7 +273,11 @@ public class ParkLeader{
 		return masterserver;
 		*/
 	}
-	
+	/**
+	 * 
+	 * @param domainnodekey
+	 * @param pk
+	 */
 	protected void runCopyTask(String domainnodekey, final Park pk){
 		//put key into queue
 		//laze run thread

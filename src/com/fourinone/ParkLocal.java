@@ -7,12 +7,27 @@ public interface ParkLocal
 {
 	/**
 	 * 创建域
-	 * @param domain
-	 * @param obj
+	 * @param domain 域名
+	 * @param obj 序列值
 	 * @return
 	 */
 	public ObjectBean create(String domain, Serializable obj);
+	/**
+	 * 创建域
+	 * @param domain 域名
+	 * @param node 节点名
+	 * @param obj 序列
+	 * @return
+	 */
 	public ObjectBean create(String domain, String node, Serializable obj);
+	/**
+	 * 创带有权限的域
+	 * @param domain
+	 * @param node
+	 * @param obj
+	 * @param auth
+	 * @return
+	 */
 	public ObjectBean create(String domain, String node, Serializable obj, AuthPolicy auth);
 	public ObjectBean create(String domain, String node, Serializable obj, boolean heartbeat);
 	public ObjectBean create(String domain, String node, Serializable obj, AuthPolicy auth, boolean heartbeat);

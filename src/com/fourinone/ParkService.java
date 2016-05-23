@@ -48,11 +48,19 @@ public class ParkService extends MementoService implements Park
 		return (crcversion!=domainversion)?crcversion:domainversion;
 	}
 	
+	/**
+	 * 获取域版本号
+	 * @return
+	 */
 	private Long updateDomainVersion(){
 		Long crcversion = getObjectVersion(ObjectBytes.toBytes(System.nanoTime()));
 		return crcversion;
 	}
-
+	/**
+	 * 获取对象版本号
+	 * @param obj
+	 * @return
+	 */
 	private Long getObjectVersion(byte[] obj){
 		CRC32 crc = new CRC32();
 		crc.update(obj);//ObjectBytes.toBytes(o)
@@ -63,6 +71,10 @@ public class ParkService extends MementoService implements Park
 		return checkSessionId(null);
 	}
 	
+	/**
+	 * 创建节点域
+	 * 设置节点的各种信息
+	 */
 	public ObjValue create(String domain, String node, byte[] obj, String sessionid, int auth, boolean heartbeat) throws RemoteException,ClosetoOverException
 	{
 		ClosetoOverException.checkMemCapacity();
@@ -77,7 +89,7 @@ public class ParkService extends MementoService implements Park
 				if(!parkinfo.containsKey(domainnodekey)){
 					if(!parkinfo.containsKey(domain)){
 						parkinfo.setObj(domain, 0l);
-						parkinfo.setObj(ParkMeta.getYBB(domain), 0l);
+						parkinfo.setObj(ParkMeta.getYBB(domain), 0l);//设置版本号
 						parkinfo.setString(ParkMeta.getYCJZ(domain), sessionid);
 						parkinfo.setString(ParkMeta.getYCIP(domain), getClientHost());
 						parkinfo.setObj(ParkMeta.getYCSJ(domain), System.currentTimeMillis());
@@ -154,7 +166,9 @@ public class ParkService extends MementoService implements Park
 		}
 		return objv;
 	}
-	
+	/**
+	 * 更新域名
+	 */
 	public boolean update(String domain, int auth, String sessionid) throws RemoteException
 	{
 		boolean updateflag = false;
@@ -178,7 +192,9 @@ public class ParkService extends MementoService implements Park
 		}
 		return updateflag;
 	}
-	
+	/**
+	 * 删除域名
+	 */
 	public ObjValue delete(String domain, String node, String sessionid) throws RemoteException,ClosetoOverException
 	{
 		ObjValue objrm = null;
@@ -244,7 +260,9 @@ public class ParkService extends MementoService implements Park
 			LogUtil.info("[Park]", "[AuthPolicy]", "No permissions to do for "+domainnodekey+"!");
 		return authflag;
 	}
-	
+	/**
+	 * 根据domain、node、sessionid 返回 节点
+	 */
 	public ObjValue get(String domain, String node, String sessionid) throws RemoteException,ClosetoOverException
 	{
 		//String thesessionid = checkSessionId(sessionid);
@@ -279,7 +297,9 @@ public class ParkService extends MementoService implements Park
 		rlk.unlock();
 		return ov;
 	}
-	
+	/**
+	 * 获取协同服务信息
+	 */
 	public ObjValue getParkinfo() throws RemoteException
 	{
 		try{
@@ -289,7 +309,10 @@ public class ParkService extends MementoService implements Park
 		}
 		return getTheParkinfo();
 	}
-	
+	/**
+	 * 获取协同服务信息
+	 * @return
+	 */
 	ObjValue getTheParkinfo()
 	{
 		ObjValue ov = null;
@@ -299,7 +322,11 @@ public class ParkService extends MementoService implements Park
 		rlk.unlock();
 		return ov;
 	}
-	
+	/**
+	 * 
+	 * 给当前协同服务赋值
+	 * 
+	 */
 	public boolean setParkinfo(ObjValue ov) throws RemoteException
 	{
 		LogUtil.fine("[Park]", "[setParkinfo]", ov);

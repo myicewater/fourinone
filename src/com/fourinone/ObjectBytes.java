@@ -27,7 +27,11 @@ final class ObjectBytes //nopub
 		codes['+']=62;
 		codes['/']=63;
 	}
-	
+	/**
+	 * 将一个对象转换成字节数组
+	 * @param o
+	 * @return
+	 */
 	static byte[] toBytes(Object o){
 		byte[] gbt = null;
 		try{
@@ -45,7 +49,12 @@ final class ObjectBytes //nopub
 		}
 		return gbt;
 	}
-	
+	/**
+	 * 将字节流转换成字节数组
+	 * @param gis
+	 * @param GZIPFlag
+	 * @return
+	 */
 	static byte[] getByteFromIs(InputStream gis, boolean GZIPFlag)
 	{
 		byte[] gbt = null;

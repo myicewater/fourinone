@@ -6,6 +6,11 @@ package com.fourinone;
  */
 public class ParkMeta
 {
+	/**
+	 *  、YBB（版本号）、YCJZ（创建者）、YCIP（创建IP）、YCSJ（创建时间）、
+	 *  YQX（权限）、YSX（属性）、YGXZ（更行者）、YGIP（更新IP）、YGSJ（更新时间）
+	 *  SXXT（心跳）
+	 */
 	private static String YSJ,YBB,YCJZ,YCIP,YCSJ,YQX,YSX,YGXZ,YGIP,YGSJ,SXXT;
 	static{
 		MulBean mb = ConfigContext.getMulBean();

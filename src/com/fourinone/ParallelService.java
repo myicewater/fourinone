@@ -68,7 +68,11 @@ abstract class ParallelService
 		}
 		return wslist;
 	}
-	
+	/**
+	 * 
+	 * @param workerType
+	 * @return
+	 */
 	List<String[]> getWorkersService(String workerType)
 	{
 		return getWorkersService(null,0,workerType);

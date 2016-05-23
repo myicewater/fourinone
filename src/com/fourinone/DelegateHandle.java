@@ -4,7 +4,14 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
-
+/**
+ * 代理处理
+ * 
+ * 对方法调用进行编码指派到它的调用处理程序 invoke
+ * 
+ * @author 朱素海
+ *
+ */
 public class DelegateHandle implements InvocationHandler
 {
 	private Class[] bs;

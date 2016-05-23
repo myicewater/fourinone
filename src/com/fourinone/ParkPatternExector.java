@@ -2,7 +2,11 @@ package com.fourinone;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.List;
-
+/**
+ * 协同服务（职介所）执行器
+ * @author 朱素海
+ *
+ */
 public class ParkPatternExector
 {
 	static boolean newParkFlag=false;
@@ -10,6 +14,10 @@ public class ParkPatternExector
 	private static LinkedBlockingQueue<ParkPatternBean> bq = new LinkedBlockingQueue<ParkPatternBean>();
 	private static AsyncExector aeLastest=null;
 	
+	/**
+	 * 返回协同服务
+	 * @return
+	 */
 	static ParkLocal getParkLocal()
 	{
 		if(pl==null)
@@ -20,7 +28,12 @@ public class ParkPatternExector
 		}
 		return pl;
 	}
-	
+	/**
+	 * 获取协调服务
+	 * @param host
+	 * @param port
+	 * @return
+	 */
 	static ParkLocal getParkLocal(String host, int port){
 		if(newParkFlag)
 			return BeanContext.getPark(host, port);//new pl everytime 14.10.16
@@ -29,7 +42,11 @@ public class ParkPatternExector
 	}
 	
 	//static void resetParkLocal(){pl=null;}//14.10.17
-	
+	/**
+	 * 根据工人类型返回工人
+	 * @param workerType
+	 * @return
+	 */
 	static List<ObjectBean> getWorkerTypeList(String workerType)
 	{
 		return getParkLocal().get("_worker_"+workerType);
@@ -40,6 +57,12 @@ public class ParkPatternExector
 		return getParkLocal(parkhost, parkport).get("_worker_"+workerType);
 	}
 	
+	/**
+	 * 创建节点
+	 * @param workerType
+	 * @param nodevalue
+	 * @return
+	 */
 	static ObjectBean createWorkerTypeNode(String workerType, String nodevalue)
 	{
 		return getParkLocal().create("_worker_"+workerType, ParkGroup.getKeyId(), nodevalue, AuthPolicy.OP_ALL, true);

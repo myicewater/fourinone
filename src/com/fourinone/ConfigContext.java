@@ -5,7 +5,11 @@ import java.util.Properties;
 import java.text.DateFormat;
 import java.util.Date;
 import java.io.File;
-
+/**
+ * 配置上下文
+ * @author 朱素海
+ *
+ */
 public class ConfigContext
 {
 	/**
@@ -204,6 +208,10 @@ public class ConfigContext
 		return getConfig("CTOR","CTORSERVERS",null).split(":");
 	}
 	
+	/**
+	 * 获取fttp配置信息
+	 * @return
+	 */
 	static String[] getFttpConfig()
 	{
 		return getConfig("FTTP","SERVERS",null).split(":");
@@ -293,7 +301,10 @@ public class ConfigContext
 		}catch(Exception e){}
 		return maxnum;
 	}
-	
+	/**
+	 * 获取并行模式
+	 * @return
+	 */
 	static int getParallelPattern()
 	{
 		return Integer.parseInt(getConfig("COMPUTEMODE","MODE","DEFAULT"));
@@ -411,7 +422,11 @@ public class ConfigContext
 		
 		return ov;
 	}
-	
+	/**
+	 * 返回request
+	 * @param requestUrl
+	 * @return
+	 */
 	static String getRequest(String requestUrl){
 		return getMulBean().getFileString(getMulBean().getString(requestUrl));
 	}

@@ -10,6 +10,9 @@ import java.util.List;
 
 public class HbDaemo 
 {
+	/**
+	 * 计时器，在指定时间发出警告
+	 */
 	static Timer tm = new Timer();
 	private static PutHbTask putTask = null;
 	private static GetHbTask getTask = null;
@@ -18,13 +21,28 @@ public class HbDaemo
 	final static long dt = Long.parseLong(ConfigContext.getConfig("PARK","MAXDELAY",null,"0"));
 	final static long gt = pt*2;
 	final static String vs = "\u3001";
-	
+	/**
+	 * 定时执行任务
+	 * 
+	 * 通过Timer执行任务
+	 * 
+	 * @param tt 任务
+	 * @param d 当前时间 多少毫秒后第一次执行
+	 * @param p 任务间隔时长
+	 */
 	public static void runTask(TimerTask tt, int d, long p){
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MILLISECOND, d);
 		tm.scheduleAtFixedRate(tt, cal.getTime(), p);
 	}
-	
+	/**
+	 * 添加任务 执行任务
+	 * @param pk
+	 * @param pl
+	 * @param domain
+	 * @param node
+	 * @param sessionid
+	 */
 	public static void runPutTask(Park pk, ParkLeader pl, String domain, String node, String sessionid){
 		if(putTask==null)
 		{
@@ -69,7 +87,11 @@ public class HbDaemo
 			//HbDaemo.runTask(new PutHbTask());
 	}
 }
-
+/**
+ * 添加** 定时任务
+ * @author 朱素海
+ *
+ */
 class PutHbTask extends TimerTask
 {
 	private Park pk;
@@ -110,7 +132,11 @@ class PutHbTask extends TimerTask
 		}
 	}
 }
-
+/**
+ * 获取**  定时任务
+ * @author 朱素海
+ *
+ */
 class GetHbTask extends TimerTask
 {
 	private ObjValue hbinfo;
@@ -145,7 +171,11 @@ class GetHbTask extends TimerTask
 		}
 	}
 }
-
+/**
+ * 清除** 定时任务
+ * @author 朱素海
+ *
+ */
 class ClearTask extends TimerTask
 {
 	private ParkService ps;

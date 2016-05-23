@@ -1,5 +1,9 @@
 package com.fourinone;
-
+/**
+ * ºÃ≥–Exception
+ * @author ÷ÏÀÿ∫£
+ *
+ */
 public class ServiceException extends Exception
 {
 	public ServiceException(){

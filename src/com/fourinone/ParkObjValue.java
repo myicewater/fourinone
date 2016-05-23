@@ -11,6 +11,11 @@ import java.util.ArrayList;
  */
 public class ParkObjValue extends ObjValue
 {	
+	/**
+	 * 获取domain 下所有节点
+	 * @param nodekey
+	 * @return
+	 */
 	public ObjValue getNodeWidely(String nodekey){
 		ObjValue obj = new ObjValue();
 		Object getobj = this.getObj(nodekey);
@@ -25,7 +30,12 @@ public class ParkObjValue extends ObjValue
 		}
 		return obj;
 	}
-	
+	/**
+	 * 根据domain、node获取节点
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public ObjValue getNode(String domain, String node)
 	{
 		ObjValue ov = new ObjValue();
@@ -72,6 +82,10 @@ public class ParkObjValue extends ObjValue
 		return ov;
 	}
 	
+	/**
+	 * 获取协同服务信息
+	 * @return
+	 */
 	public ObjValue getParkInfo(){
 		ParkObjValue obj = (ParkObjValue)this.clone();
 		/*ArrayList<String> hbkeylist = new ArrayList<String>();
@@ -243,7 +257,13 @@ public class ParkObjValue extends ObjValue
 			LogUtil.info("[checkGrammar]", "[error]", obj);
 		return checkGrammar(domain, node)&&obj!=null;
 	}
-	
+	/**
+	 * 返回 domain.node 字符串
+	 * 如果node 为null 则返回domain
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public static String getDomainnodekey(String domain, String node){
 		String domainnodekey = node==null?domain:domain+"."+node;
 		return domainnodekey;

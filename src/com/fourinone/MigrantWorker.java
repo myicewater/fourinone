@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 /**
  * 工人
+ * 
+ * 序列化
+ * 
  * @comment 朱素海
  *
  */
@@ -49,7 +52,9 @@ public class MigrantWorker extends WorkerParallel implements ParkStatg
 		BeanContext.startWorker(host, port, workerType, this, false);
 		ParkPatternExector.createWorkerTypeNode(parkhost, parkport, workerType, host+":"+port);
 	}
-	
+	/**
+	 * 工人监听 workerType，进行任务等待
+	 */
 	void waitWorkingByPark(String workerType)
 	{
 		ObjectBean ob = ParkPatternExector.createWorkerTypeNode(workerType, "wk_pk");

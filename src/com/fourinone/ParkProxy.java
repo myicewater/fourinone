@@ -105,13 +105,22 @@ final public class ParkProxy{
 	public ObjectBean create(String domain, String node, Serializable obj, boolean heartbeat){
 		return put(domain, node, obj, AuthPolicy.OP_ALL, heartbeat);
 	}
-	
+	/**
+	 * 添加域节点
+	 * @param domain
+	 * @param node
+	 * @param obj
+	 * @param auth
+	 * @param heartbeat
+	 * @return
+	 */
 	@Delegate(interfaceName="com.fourinone.ParkLocal",methodName="create",policy=DelegatePolicy.Implements)
 	public ObjectBean put(String domain, String node, Serializable obj, AuthPolicy auth, boolean heartbeat){
 		return put(domain, node, obj, auth, heartbeat, 0);
 	}
 	/**
 	 * 
+	 * 向协调服务中添加域节点、并返回添加的域节点
 	 * @param domain 域名
 	 * @param node 节点名
 	 * @param obj 序列名
