@@ -1,9 +1,20 @@
 package com.fourinone;
 
 import java.rmi.RemoteException;
-
+/**
+ * 集群上下文服务
+ * @author 朱素海
+ *
+ */
 class ServiceContext extends BeanService
 {
+	/**
+	 * 启动host:port 上服务
+	 * @param host
+	 * @param port
+	 * @param sn
+	 * @param i
+	 */
 	static <I extends ParkActive> void startService(String host, int port, String sn, I i)
 	{
 		try{
@@ -12,7 +23,15 @@ class ServiceContext extends BeanService
 			LogUtil.info("[ObjectService]", "[startService]", e);
 		}
 	}
-	
+	/**
+	 * 启动服务
+	 * @param host
+	 * @param port
+	 * @param sn
+	 * @param i
+	 * @param cb
+	 * @param pl
+	 */
 	static <I extends ParkActive> void startService(String host, int port, String sn, I i, String cb, String pl)//
 	{
 		try{

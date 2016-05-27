@@ -2,7 +2,11 @@ package com.fourinone;
 
 import java.io.File;
 import java.net.URI;
-
+/**
+ * 本地fttp服务
+ * @author 朱素海
+ *
+ */
 public interface FttpLocal
 {
 	public byte[] readByte(String f, long b, long t) throws Throwable;//FttpException

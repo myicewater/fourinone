@@ -6,9 +6,22 @@ import java.rmi.Remote;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-
+/**
+ * 节点服务
+ * @author 朱素海
+ *
+ */
 class BeanService extends PoolExector
 {	
+
+	/**
+	 * 集群添加节点
+	 * @param TPYFWYM
+	 * @param TPYRZDY
+	 * @param TPYDK
+	 * @param rmname
+	 * @param paobj
+	 */
 	final static void putBean(String TPYFWYM, boolean TPYRZDY, int TPYDK, String rmname, ParkActive paobj)
 	{
 		if(TPYFWYM!=null)
@@ -67,7 +80,12 @@ class BeanService extends PoolExector
 		}
 		return null;
 	}
-	
+	/**
+	 * 设置安全管理
+	 * @param cb codebase
+	 * @param pl policy
+	 * @param sm 安全管理类
+	 */
 	private static void setSecurity(String cb, String pl, SecurityManager sm){
 		if(cb!=null&&pl!=null){
 			System.setProperty(ConfigContext.getDMY(),cb);

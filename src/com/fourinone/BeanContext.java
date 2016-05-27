@@ -8,7 +8,11 @@ import java.util.Map;
 import java.util.List;
 import java.util.UUID;
 import java.io.File;
-
+/**
+ * 集群上下文-控制中心
+ * @author 朱素海
+ *
+ */
 public class BeanContext extends ServiceContext
 {
 	public static void setConfigFile(String configFile){
@@ -41,7 +45,7 @@ public class BeanContext extends ServiceContext
 		return getPark(host, port, ConfigContext.getParkService(), servers);
 	}
 	/**
-	 * 返回职介所默认情况
+	 * 根据配置文件获取协同服务（职介所）
 	 * @return
 	 */
 	public static ParkLocal getPark(){
@@ -49,6 +53,13 @@ public class BeanContext extends ServiceContext
 		return getPark(parkcfg[0][0], Integer.parseInt(parkcfg[0][1]), parkcfg);//input serverconfiglist string[][]
 	}
 	
+	
+	/**
+	 * 获取 指定 host:port 服务器上的协同服务（职介所）c
+	 * @param host
+	 * @param port
+	 * @return
+	 */
 	public static ParkLocal getPark(String host, int port){
 		String[][] parkcfg = ConfigContext.getParkConfig();
 		parkcfg[0][0]=host!=null?host:parkcfg[0][0];

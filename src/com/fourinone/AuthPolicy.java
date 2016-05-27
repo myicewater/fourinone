@@ -5,7 +5,18 @@ package com.fourinone;
  *
  */
 public enum AuthPolicy{
-	OP_READ(1),OP_READ_WRITE(3),OP_ALL(7);
+	/**
+	 * 只读
+	 */
+	OP_READ(1),
+	/**
+	 * 读写
+	 */
+	OP_READ_WRITE(3),
+	/**
+	 * 所有权限
+	 */
+	OP_ALL(7);
 	private int policy;
 	AuthPolicy(int policy){
 		this.policy = policy;

@@ -3,7 +3,11 @@ package com.fourinone;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * »º´æ´úÀí
+ * @author ÖìËØº£
+ *
+ */
 final public class CacheProxy
 {
 	private Cache cc;

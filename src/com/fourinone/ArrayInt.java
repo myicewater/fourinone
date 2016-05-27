@@ -1,23 +1,36 @@
 package com.fourinone;
 
 import java.util.Arrays;
-
+/**
+ * ArrayInt 类，整数
+ * @author 朱素海
+ *
+ */
 final class ArrayInt extends ArrayAdapter implements ArrayAdapter.ListInt{
 	private int arrsize = 0x20000;
 	private int[] arrint;
 	private int arrindex = 0;
 	
+	/**
+	 * 构造整形素组
+	 */
 	public ArrayInt(){
 		super();
 		arrint = new int[arrsize];
 		objarr[objindex++]=arrint;
 	}
 	
+	/***
+	 * 添加整数
+	 */
 	public void add(int[] initarr){
 		for(int i:initarr)
 			add(i);
 	}
 	
+	/**
+	 * 添加int型，达到数组最大容量，则把当前数组添加到objarr中，重新初始化arrint
+	 */
 	public void add(int i){
 		if(arrindex==arrint.length){
 			arrint = new int[arrsize];
@@ -27,7 +40,9 @@ final class ArrayInt extends ArrayAdapter implements ArrayAdapter.ListInt{
 		}
 		arrint[arrindex++]=i;
 	}
-	
+	/**
+	 * 返回个数，
+	 */
 	public int size(){
 		//System.out.println("objindex:"+objindex+",arrindex:"+arrindex);
 		return (objindex-1)*arrsize+arrindex;
@@ -70,7 +85,11 @@ final class ArrayInt extends ArrayAdapter implements ArrayAdapter.ListInt{
 		IntSort(int[] arr){
 			this.arr = arr;
 		}
-		
+		/**
+		 * 对index从k -> m 的数据进行排序
+		 * @param k
+		 * @param m
+		 */
 		private void intsort(int k, int m)
 		{ 
 			int j=m,i=k; 
@@ -93,7 +112,11 @@ final class ArrayInt extends ArrayAdapter implements ArrayAdapter.ListInt{
 			if(m>i) 
 				intsort(i,m); 
 		}
-		
+		/**
+		 * 数组排序
+		 * @param k
+		 * @param m
+		 */
 		private void arrsort(int k, int m)
 		{ 
 			int j=m,i=k; 

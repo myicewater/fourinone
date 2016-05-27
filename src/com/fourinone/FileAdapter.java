@@ -37,16 +37,30 @@ public class FileAdapter extends File
 
 	public static final short[] ConstBit = new short[]{0<<1,1<<1,1<<2,1<<3,3<<1,5<<1,6<<1,7<<1,1<<0};
 
+	/**
+	 * 1K/S
+	 * @param num
+	 * @return
+	 */
 	public static long k(long num)
 	{
 		return 0x400*num;
 	}
 	
+	/**
+	 * 1M/S
+	 * @param num
+	 * @return
+	 */
 	public static long m(long num)
 	{
 		return 0x400*k(num);
 	}
-	
+	/**
+	 * 1G/S
+	 * @param num
+	 * @return
+	 */
 	public static long g(long num)
 	{
 		return 0x400*m(num);
@@ -366,11 +380,17 @@ public class FileAdapter extends File
 	public ByteReadAdapter getByteReader(){
 		return getReader();
 	}
-	
+	/**
+	 * 获取 IntReadAdapter
+	 * @return
+	 */
 	public IntReadAdapter getIntReader(){
 		return getReader();
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ReadAdapter getReader(){
 		return getReader(0, this.length());//byte.length
 	}
@@ -667,12 +687,18 @@ public class FileAdapter extends File
 			}
 		};
 	}	
-	
+	/**
+	 * 创建文件
+	 * @return
+	 */
 	public File createFile()
 	{
 		return createFile(this.getPath());
 	}
-	
+	/**
+	 * 创建目录
+	 * @return
+	 */
 	public File createDirectory()
 	{
 		return createFile(this.getPath(),false);
@@ -945,10 +971,19 @@ public class FileAdapter extends File
 		return b;
 	}*/
 	
+	/**
+	 * 将文件内容复制到后一文件内容里，追加到末尾，不覆盖以前文件内容
+	 * @param toFilePath
+	 * @return
+	 */
 	public int copyTo(String toFilePath){
 		return copyTo(toFilePath, FileAdapter.m(8));
 	}
-	
+	/**
+	 * 将文件内容复制到后一文件内容里，追加到末尾，不覆盖以前文件内容，复制速度 为 every
+	 * @param toFilePath
+	 * @return
+	 */
 	public int copyTo(String toFilePath, long every){
 		int c=0;
 		FileAdapter fa = new FileAdapter(toFilePath);
@@ -966,7 +1001,12 @@ public class FileAdapter extends File
 	public Result<Integer> tryCopyTo(String toFilePath){
 		return tryCopyTo(toFilePath, FileAdapter.m(8));
 	}
-	
+	/**
+	 * 并行复制，通过检查 Result的getstatus是否完成复制
+	 * @param toFilePath
+	 * @param every
+	 * @return
+	 */
 	public Result<Integer> tryCopyTo(final String toFilePath, final long every)
 	{
 		final FileResult<Integer> fr = new FileResult<Integer>(false);

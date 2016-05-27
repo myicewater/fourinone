@@ -38,7 +38,13 @@ abstract class ParallelService
 		}
 		return wklist.toArray(new WorkerLocal[wklist.size()]);
 	}*/
-	
+	/**
+	 * 获取 parkhost:parkport 上类型为workerType的工人
+	 * @param parkhost
+	 * @param parkport
+	 * @param workerType
+	 * @return
+	 */
 	List<String[]> getWorkersServicePark(String parkhost, int parkport, String workerType)
 	{
 		List<ObjectBean> oblist = ParkPatternExector.getWorkerTypeList(parkhost, parkport, workerType);
@@ -52,7 +58,14 @@ abstract class ParallelService
 		}
 		return wslist;
 	}
-	
+	/**
+	 * 根据配置文件获取 协同服务上的工人，并且不在 host：port 协同服务上
+	 * 获取 host：port服务器上 类型为workerType的工人
+	 * @param host
+	 * @param port
+	 * @param workerType
+	 * @return
+	 */
 	List<String[]> getWorkersService(String host, int port, String workerType)
 	{
 		//LogUtil.fine("", "", "getWorkersService:"+workerType);

@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
-
+/**
+ * »º´æ½Ó¿Ú
+ * @author ÖìËØº£
+ *
+ */
 public interface Cache extends ParkActive
 {
 	//public String add(String type, Serializable obj) throws RemoteException;

@@ -15,7 +15,7 @@ public class ParkPatternExector
 	private static AsyncExector aeLastest=null;
 	
 	/**
-	 * 返回协同服务
+	 * 根据配置文件获取协同服务（职介所）
 	 * @return
 	 */
 	static ParkLocal getParkLocal()
@@ -28,8 +28,9 @@ public class ParkPatternExector
 		}
 		return pl;
 	}
+	
 	/**
-	 * 获取协调服务
+	 * 获取 指定 host:port 服务器上的协同服务（职介所）
 	 * @param host
 	 * @param port
 	 * @return
@@ -43,7 +44,7 @@ public class ParkPatternExector
 	
 	//static void resetParkLocal(){pl=null;}//14.10.17
 	/**
-	 * 根据工人类型返回工人
+	 * 根据配置文件获取协同服务上类型为workerType的工人
 	 * @param workerType
 	 * @return
 	 */
@@ -51,7 +52,13 @@ public class ParkPatternExector
 	{
 		return getParkLocal().get("_worker_"+workerType);
 	}
-	
+	/**
+	 * 获取 parkhost:parkport 协同服务上上类型为workerType 的 工人
+	 * @param parkhost
+	 * @param parkport
+	 * @param workerType
+	 * @return
+	 */
 	static List<ObjectBean> getWorkerTypeList(String parkhost, int parkport, String workerType)
 	{
 		return getParkLocal(parkhost, parkport).get("_worker_"+workerType);
@@ -67,7 +74,14 @@ public class ParkPatternExector
 	{
 		return getParkLocal().create("_worker_"+workerType, ParkGroup.getKeyId(), nodevalue, AuthPolicy.OP_ALL, true);
 	}
-	
+	/**
+	 * 创建类型为workerType 的节点
+	 * @param parkhost
+	 * @param parkport
+	 * @param workerType
+	 * @param nodevalue
+	 * @return
+	 */
 	static ObjectBean createWorkerTypeNode(String parkhost, int parkport, String workerType, String nodevalue)
 	{
 		return getParkLocal(parkhost, parkport).create("_worker_"+workerType, ParkGroup.getKeyId(), nodevalue, AuthPolicy.OP_ALL, true);

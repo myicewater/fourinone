@@ -1,7 +1,17 @@
 package com.fourinone;
-
+/**
+ * 数组适配器
+ * @author 朱素海
+ *
+ */
 public class ArrayAdapter{
+	/**
+	 * 对象数组容量
+	 */
 	private int objinit = 0x40;
+	/**
+	 * 存放整数数组的 对象数组
+	 */
 	Object[] objarr;
 	int objindex = 0;
 	
@@ -21,6 +31,9 @@ public class ArrayAdapter{
 		public void order(int[] arr);
 	}
 	
+	/** 
+	 * 如果达到最大容量 0x40,则进行扩容，每次增加 0x40个
+	 */
 	void auto(){
 		if(objindex==objarr.length){
 			Object[] objarrnew = new Object[objarr.length+objinit];
@@ -29,6 +42,10 @@ public class ArrayAdapter{
 		}
 	}
 	
+	/**
+	 * 创建整形数组
+	 * @return
+	 */
 	public static ListInt getListInt(){
 		return new ArrayInt();
 	}

@@ -208,6 +208,11 @@ public class FttpWorkerProxy extends WorkerServiceProxy
 		return res;
 	}
 	
+	/**
+	 * 列出计算机上的硬盘目录
+	 * @return
+	 * @throws Throwable
+	 */
 	@Delegate(interfaceName="com.fourinone.FttpLocal",methodName="getListRoots",policy=DelegatePolicy.Implements)
 	public String[] listRoots() throws Throwable{
 		try{

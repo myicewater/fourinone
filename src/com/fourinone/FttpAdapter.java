@@ -8,7 +8,11 @@ import com.fourinone.FileBatch.TryByteWriteAdapter;
 import com.fourinone.FileBatch.TryIntReadAdapter;
 import com.fourinone.FileBatch.TryIntWriteAdapter;
 import com.fourinone.FileAdapter;
-
+/**
+ * fttp 适配器
+ * @author 朱素海
+ *
+ */
 public final class FttpAdapter
 {
 	//private URI fl = null;
@@ -90,7 +94,13 @@ public final class FttpAdapter
 	public IntFttpReadAdapter getIntFttpReader(long beginIndex, long intNum) throws FttpException{
 		return getFttpReader(beginIndex, intNum);
 	}
-	
+	/**
+	 * 读取从beginIndex 开始，长度为bytesNum的数据
+	 * @param beginIndex
+	 * @param bytesNum
+	 * @return
+	 * @throws FttpException
+	 */
 	public FttpReadAdapter getFttpReader(long beginIndex, long bytesNum) throws FttpException{
 		//return new FttpContractor(fl,beginIndex,bytesNum);
 		/*FttpContractor fcread = fc.object();
@@ -129,7 +139,11 @@ public final class FttpAdapter
 		fc.setWriteArea(beginIndex, bytesNum);
 		return fc;
 	}
-	
+	/**
+	 * 获取文件属性
+	 * @return
+	 * @throws FttpException
+	 */
 	public FileProperty getProperty() throws FttpException{
 		fc.acquireProperty();
 		return fc;
@@ -152,11 +166,19 @@ public final class FttpAdapter
 		}
 		return fcs;
 	}*/
+	/**
+	 * 列出计算机上的硬盘目录
+	 * @return
+	 * @throws FttpException
+	 */
 	
 	public String[] listRoots() throws FttpException{
 		return fc.listRoots();
 	}
-	
+	/**
+	 * 获取集群文件系统根目录
+	 * @return
+	 */
 	public static String[] fttpRoots(){
 		return FttpContractor.getContractor().fttpRoots();
 	}
@@ -179,21 +201,41 @@ public final class FttpAdapter
 		}
 		return rootspath;
 	}
-	
+	/**
+	 * 创建文件
+	 * @return
+	 * @throws FttpException
+	 */
 	public FttpAdapter createFile() throws FttpException{
 		fc.create(true);
 		return this;
 	}
-	
+	/**
+	 * 创建目录
+	 * @return
+	 * @throws FttpException
+	 */
 	public FttpAdapter createDirectory() throws FttpException{
 		fc.create(false);
 		return this;
 	}
-	
+	/**
+	 * 删除文件
+	 * 
+	 * 某些情况下delete方法没那么快及时生效
+	 * 为了能高效读写文件，如果虚拟机内有缓存，导致不能马上删除，可以通过修改文件后缀，添加删除标志，再在其他时间同一删除
+	 * @return
+	 * @throws FttpException
+	 */
 	public boolean delete() throws FttpException{
 		return fc.delete();
 	}
-	
+	/**
+	 * 把一个文件复制到指定路径
+	 * @param topath
+	 * @return
+	 * @throws FttpException
+	 */
 	public FttpAdapter copyTo(String topath)throws FttpException{
 		return copyTo(topath,FileAdapter.m(1));
 	}
@@ -209,16 +251,26 @@ public final class FttpAdapter
 	public Result<FttpAdapter> tryCopyTo(String topath, long every){
 		return fc.tryCopy(topath,every);//tryCopy
 	}
-	
+	/**
+	 * 重命名文件，返回命名后的文件
+	 * @param newname
+	 * @return
+	 * @throws FttpException
+	 */
 	public FttpAdapter rename(String newname)throws FttpException{
 		return fc.rename(newname)?new FttpAdapter(this.getProperty().getParent(),newname):null;
 	}
 	
 	//close() close pool
+	/**
+	 * 关闭文件操作器
+	 */
 	public void close(){
 		fc = null;
 	}
-	
+	/**
+	 * 关闭并退出
+	 */
 	public void closeExit(){
 		fc.exit();
 		close();

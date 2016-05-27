@@ -1,5 +1,9 @@
 package com.fourinone;
-
+/**
+ * 包工头：具有并行属性
+ * @author 朱素海
+ *
+ */
 public abstract class ContractorParallel extends ParallelService
 {
 	private int parallelPatternFlag = ConfigContext.getParallelPattern();
@@ -30,7 +34,9 @@ public abstract class ContractorParallel extends ParallelService
 		ContractorService ctorsv = new ContractorService(this);
 		ctorsv.waitWorking(workerType);
 	}
-	
+	/**
+	 * 关闭 线程池执行器
+	 */
 	public void exit(){
 		PoolExector.close();
 	}

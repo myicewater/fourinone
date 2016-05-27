@@ -39,7 +39,10 @@ class PoolExector //java.io.Closeable
 		}
 		return tpe;
 	}
-	
+	/**
+	 * 初始化定时线程池执行器
+	 * @return
+	 */
 	static ScheduledThreadPoolExecutor stpe()
 	{
 		if(stpe==null)
@@ -55,7 +58,9 @@ class PoolExector //java.io.Closeable
 		if(t>0)
 			stpe().schedule(i,t,TimeUnit.SECONDS);
 	}
-	
+	/**
+	 * 关闭执行器
+	 */
 	static synchronized void close(){//
 		if(tpe!=null){
 			try{

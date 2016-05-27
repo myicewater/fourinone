@@ -2,7 +2,11 @@ package com.fourinone;
 
 import java.io.Serializable;
 import java.util.Map;
-
+/**
+ * 本地缓存接口
+ * @author 朱素海
+ *
+ */
 public interface CacheLocal
 {
 	/*public String add(String type, Serializable obj);

@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.lang.reflect.Array;
 import java.util.Random;
-
+/**
+ * 包工头
+ * @author 朱素海
+ *
+ */
 public abstract class Contractor extends ContractorParallel
 {
 	private Contractor ctor;

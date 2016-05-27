@@ -74,7 +74,11 @@ abstract class FttpContractor extends Contractor implements FttpAdapter.FttpAdap
 		}
 		return wks;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 * @throws FttpException
+	 */
 	FttpLocal getFttpLocal() throws FttpException{
 		FttpLocal flf = null;
 		
@@ -364,7 +368,11 @@ abstract class FttpContractor extends Contractor implements FttpAdapter.FttpAdap
 	public String[] list(){
 		return (String[])res.getObj("list");
 	}
-	
+	/**
+	 * 列出计算机上的硬盘目录
+	 * @return
+	 * @throws FttpException
+	 */
 	public String[] listRoots() throws FttpException{
 		try{
 			return getFttpLocal().getListRoots();

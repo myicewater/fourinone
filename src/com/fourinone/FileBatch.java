@@ -1,8 +1,17 @@
 package com.fourinone;
 
 import java.util.List;
-
+/**
+ * 远程文件批量并行读写
+ * @author 朱素海
+ *
+ */
 public class FileBatch{
+	/**
+	 * 批量并行读，直到每个FttpReadAdapter 读完后，以数组的方式批量输出返回的结果
+	 * @param fras
+	 * @return
+	 */
 	public Result<byte[]>[] readAllBatch(TryByteReadAdapter[] fras){
 		return readAllBatch(fras, false);
 	}
@@ -18,7 +27,13 @@ public class FileBatch{
 	public Result<int[]>[] readIntAllBatch(TryIntReadAdapter[] fras, boolean locked){
 		return readAllBatch(null, fras, locked);
 	}
-	
+	/**
+	 * 批量并行读
+	 * @param tbrs
+	 * @param tirs
+	 * @param locked
+	 * @return
+	 */
 	private Result[] readAllBatch(TryByteReadAdapter[] tbrs, TryIntReadAdapter[] tirs, boolean locked){
 		Result[] hmarr = new Result[tbrs!=null?tbrs.length:tirs.length];
 		for(int i=0,j=0;j<hmarr.length;){
@@ -33,7 +48,12 @@ public class FileBatch{
 		}
 		return submit(hmarr);
 	}
-	
+	/**
+	 * 批量并行写
+	 * @param fwas
+	 * @param bts
+	 * @return
+	 */
 	public Result<Integer>[] writeBatch(TryByteWriteAdapter[] fwas, byte[] bts){
 		return writeBatch(fwas,bts,false);
 	}
@@ -65,7 +85,16 @@ public class FileBatch{
 	private Result<Integer>[] writeIntBatch(TryIntWriteAdapter[] fwas, List<int[]> btarr, int[] its, boolean locked){
 		return writeBatch(null, fwas, btarr, null, its, locked);
 	}
-	
+	/**
+	 * 批量并行写
+	 * @param fbws
+	 * @param fiws
+	 * @param btarr
+	 * @param bts
+	 * @param its
+	 * @param locked
+	 * @return
+	 */
 	private Result<Integer>[] writeBatch(TryByteWriteAdapter[] fbws, TryIntWriteAdapter[] fiws, List btarr, byte[] bts, int[] its, boolean locked){
 		Result[] hmarr = new Result[fbws!=null?fbws.length:fiws.length];
 		for(int i=0,j=0;j<hmarr.length;){
@@ -86,7 +115,12 @@ public class FileBatch{
 		}
 		return submit(hmarr);
 	}
-	
+	/**
+	 * 批量并行读写
+	 * @param ras
+	 * @param fwas
+	 * @return
+	 */
 	public Result<Integer>[] readWriteBatch(TryByteReadAdapter[] ras, TryByteWriteAdapter[] fwas){
 		return readWriteBatch(ras, false, fwas, false);
 	}
@@ -102,7 +136,16 @@ public class FileBatch{
 	public Result<Integer>[] readWriteIntBatch(TryIntReadAdapter[] ras, boolean readLocked, TryIntWriteAdapter[] fwas, boolean writeLocked){
 		return readWriteBatch(null, ras, readLocked, null, fwas, writeLocked);
 	}
-	
+	/**
+	 * 批量并行读写
+	 * @param tbrs
+	 * @param tirs
+	 * @param readLocked
+	 * @param tbws
+	 * @param tiws
+	 * @param writeLocked
+	 * @return
+	 */
 	private Result<Integer>[] readWriteBatch(TryByteReadAdapter[] tbrs, TryIntReadAdapter[] tirs, boolean readLocked, TryByteWriteAdapter[] tbws, TryIntWriteAdapter[] tiws, boolean writeLocked){
 		Result[] rdarr = new Result[tbrs!=null?tbrs.length:tirs.length];
 		Result[] hmarr = new Result[tbws!=null?tbws.length:tiws.length];
