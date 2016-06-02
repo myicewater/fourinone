@@ -1,7 +1,13 @@
 package com.fourinone;
 import java.io.Serializable;
 /**
+ * 
+ * 序列化接口<br>
+ * 
  * 继承了Serializable 序列化接口，有固定序列Id
+ * 
+ * 
+ * 
  * @comment 朱素海
  *
  */

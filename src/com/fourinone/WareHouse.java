@@ -2,7 +2,10 @@ package com.fourinone;
 
 //import java.io.Serializable;
 /**
- * 用于封装参数，传递参数 的仓库
+ * 用于封装参数，传递参数 的仓库——手工仓库
+ * 
+ * 可以存放任意类型，本身就是一个map的实现
+ * 
  * @comment 朱素海comment
  *
  */

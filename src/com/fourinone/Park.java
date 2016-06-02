@@ -4,8 +4,13 @@ import java.util.List;
 import java.rmi.RemoteException;
 import java.io.Serializable;
 /**
- * 接口支持序列化
- * 支持rmi远程调用
+ * 职介者服务<br>
+ * 
+ * 支持rmi远程调用<br>
+ * 
+ * 支持序列化<br>
+ * 
+ * 
  * @author 朱素海
  *
  */
