@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import java.util.Hashtable;
 import java.util.List;
 /**
+ * Map 对象<br>
  * 继承于LinkedHashMap,实现了序列化接口,可以看做是HashMap，有自己的方法
  * @author 朱素海
  *

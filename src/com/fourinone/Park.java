@@ -24,6 +24,10 @@ public interface Park extends ParkActive
 	public ObjValue get(String domain, String node, String sessionid) throws RemoteException,ClosetoOverException;
 	public ObjValue getLastest(String domain, String node, String sessionid, long version) throws RemoteException,ClosetoOverException;
 	public ObjValue delete(String domain, String node, String sessionid) throws RemoteException,ClosetoOverException;
+	/**
+	 * 获取sessionId
+	 * 生成规则："se"+System.nanoTime()
+	 */
 	public String getSessionId() throws RemoteException;
 	public boolean heartbeat(String[] domainnodekey, String sessionid) throws RemoteException;
 	public ObjValue getParkinfo() throws RemoteException;

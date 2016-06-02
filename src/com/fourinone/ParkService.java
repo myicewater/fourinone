@@ -13,6 +13,8 @@ import java.util.Date;
 /**
  * 
  * @author 朱素海
+ * 
+ * 职介者服务
  *
  */
 public class ParkService extends MementoService implements Park
@@ -27,7 +29,12 @@ public class ParkService extends MementoService implements Park
 		pl = new ParkLeader(host,port,servers,parkService);
 		pl.wantBeMaster(this);
 	}
-	
+	/**
+	 * 检查sessionId，为空则生成一个<br>
+	 * 生成规则："se"+System.nanoTime()
+	 * @param sessionid
+	 * @return
+	 */
 	private String checkSessionId(String sessionid){
 		if(sessionid==null)
 			return "se"+System.nanoTime();
@@ -67,6 +74,9 @@ public class ParkService extends MementoService implements Park
 		return new Long(crc.getValue());
 	}
 	
+	/**
+	 * 获取sessionId
+	 */
 	public String getSessionId() throws RemoteException{
 		return checkSessionId(null);
 	}
@@ -336,13 +346,19 @@ public class ParkService extends MementoService implements Park
 		wlk.unlock();
 		return true;
 	}
-	
+	/**
+	 * 判断是否是master
+	 * @return 是则返回此对象，不是返回null
+	 */
 	public String[] askMaster() throws RemoteException
 	{
 		LogUtil.info("[Park]", "[askMaster]", "receive askMaster................");
 		return pl.isMaster();
 	}
-	
+	/**
+	 * 申请成为master
+	 * @return 申请成功返回true，
+	 */
 	public boolean askLeader() throws RemoteException,LeaderException
 	{
 		LogUtil.info("[Park]", "[askLeader]", "receive askLeader................");

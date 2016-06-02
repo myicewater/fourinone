@@ -7,7 +7,10 @@ import java.rmi.RemoteException;
 //import java.rmi.ConnectException;
 
 /**
- * ParkLocal 代理
+ * ParkLocal 代理<br>
+ * 
+ * 职介者代理
+ * 
  * @author 朱素海
  *
  */
@@ -63,7 +66,9 @@ final public class ParkProxy{
 //	private class ObjectBeanList<E> extends ArrayList implements List{
 //		private Long vid;
 //	}
-	
+	/**
+	 * 初始化sessionId
+	 */
 	private void init(){
 		try{
 			if(sid==null)

@@ -14,7 +14,13 @@ public class ParkLeader{
 	boolean ismaster = false;
 	boolean alwaystry = false;
 	private String parkservicecfg = "ParkService";
+	/**
+	 * 当前职介者服务的 host：port
+	 */
 	private String[] thisserver; //thishost,thisport;cur host for service and cur leader for proxy
+	/**
+	 * 职介者组
+	 */
 	String[][] groupserver = new String[][]{{"localhost","1888"},{"localhost","1889"},{"localhost","1890"}};
 	private LinkedBlockingQueue<String> bq = new LinkedBlockingQueue<String>();
 	private AsyncExector rpl=null;
@@ -184,6 +190,12 @@ public class ParkLeader{
 		return pklist.toArray(new Park[pklist.size()]);
 	}
 	
+	/**
+	 * 检查是否是master，如果有（是）master或者没有master，则设为master，返回true
+	 * @param sv
+	 * @param pk
+	 * @return 
+	 */
 	protected boolean checkMasterPark(String[] sv, Park pk){
 		if(ismaster||getOtherMasterPark(sv)==null){//cant ismaster for double conflict in net break
 			copyArray(thisserver, sv);
@@ -230,7 +242,11 @@ public class ParkLeader{
 			LogUtil.info("[ParkLeader]", "[setInitParkInfo]", re);
 		}
 	}
-	
+	/**
+	 * 设置成为master（领导）
+	 * @param ismaster
+	 * @param pk
+	 */
 	private void setMaster(boolean ismaster, Park pk){
 		this.ismaster=ismaster;
 		LogUtil.info("", "", "setMaster("+thisserver[0]+":"+thisserver[1]+"):"+ismaster);
@@ -238,10 +254,19 @@ public class ParkLeader{
 			HbDaemo.runClearTask((ParkService)pk);
 	}
 	
+	/**
+	 * 判断是否是 master,<br>
+	 * 
+	 * @return 是则返回thisserver，不是返回null
+	 */
 	protected String[] isMaster(){
 		return ismaster?thisserver:null;
 	}
-	
+	/**
+	 * 获取其他职介者中的master
+	 * @param sv
+	 * @return 有则返回Park，没有返回null
+	 */
 	protected Park getOtherMasterPark(String[] sv){
 		Park pkmaster = null;
 		try{
@@ -325,12 +350,21 @@ public class ParkLeader{
 		return sendlist.toArray(new Boolean[sendlist.size()]);
 	}
 	
+	/**
+	 * 把fromArr 拷贝到 toArr
+	 * @param fromArr
+	 * @param toArr
+	 */
 	private void copyArray(String[] fromArr, String[] toArr)
 	{
 		for(int i=0;i<toArr.length;i++)
 			toArr[i]=fromArr[i];
 	}
 	
+	/**
+	 * 获取当前职介者的 host:port
+	 * @return
+	 */
 	public String[] getThisserver()
 	{
 		return thisserver;
