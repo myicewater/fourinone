@@ -198,11 +198,23 @@ final public class ParkProxy{
 		return ob;
 	}
 	
+	/**
+	 * 根据domain ，node 获取相应的对象
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	@Delegate(interfaceName="com.fourinone.ParkLocal",methodName="get",policy=DelegatePolicy.Implements)
 	public ObjectBean get(String domain, String node){
 		return get(domain, node, 0);
 	}
-	
+	/**
+	 * 根据domain node 获取对应的对象
+	 * @param domain
+	 * @param node
+	 * @param i
+	 * @return
+	 */
 	public ObjectBean get(String domain, String node, int i)
 	{
 		ObjectBean ob=null;
@@ -473,7 +485,13 @@ final public class ParkProxy{
 			}
 		}.run();
 	}
-	
+	/**
+	 * 把ObjValue转换成ObjectBean
+	 * @param ov
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public ObjectBean OvToBean(ObjValue ov, String domain, String node){
 		if(ov!=null&&!ov.isEmpty())
 		{

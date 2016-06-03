@@ -11,6 +11,9 @@ import java.rmi.RemoteException;
  *
  */
 public class ParkLeader{
+	/**
+	 * 是否是master（领导、主）
+	 */
 	boolean ismaster = false;
 	boolean alwaystry = false;
 	private String parkservicecfg = "ParkService";

@@ -158,6 +158,11 @@ class HandlerEcho implements HttpHandler
 	}
 }
 
+/**
+ * response处理处理器
+ * @author Administrator
+ *
+ */
 class HandlerRes implements HttpHandler
 {
 	public void handle(HttpExchange exchange) throws IOException
@@ -189,6 +194,11 @@ class HandlerRes implements HttpHandler
 	}
 }
 
+/**
+ * 权限认证处理器
+ * @author Administrator
+ *
+ */
 class HandlerAuth implements HttpHandler
 {
 	String getResponse(String treeId, int treenum, String eid){

@@ -30,7 +30,7 @@ public class ParkPatternExector
 	}
 	
 	/**
-	 * 获取 指定 host:port 服务器上的协同服务（职介所）
+	 * 获取 指定 host:port 服务器上的协同服务（职介者）
 	 * @param host
 	 * @param port
 	 * @return

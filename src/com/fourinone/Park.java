@@ -4,7 +4,7 @@ import java.util.List;
 import java.rmi.RemoteException;
 import java.io.Serializable;
 /**
- * 职介者服务<br>
+ * 职介者服务接口<br>
  * 
  * 支持rmi远程调用<br>
  * 

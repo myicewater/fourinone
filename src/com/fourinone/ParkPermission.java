@@ -1,7 +1,12 @@
 package com.fourinone;
 
 import java.security.Permission;
-
+/**
+ * 职介者 许可
+ * @author Administrator
+ *
+ * 
+ */
 public class ParkPermission extends Permission
 {
 	private String action;

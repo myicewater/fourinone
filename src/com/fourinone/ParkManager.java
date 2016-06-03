@@ -3,7 +3,12 @@ package com.fourinone;
 import java.io.FileDescriptor;
 import java.net.InetAddress;
 import java.rmi.RMISecurityManager;
-
+/**
+ * 职介者安全管理器<br>
+ * 然而什么也没做
+ * @author Administrator
+ *
+ */
 class ParkManager extends RMISecurityManager{
 	public void checkCreateClassLoader() { } 
 	public void checkAccess(Thread g) { }

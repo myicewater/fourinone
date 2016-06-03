@@ -14,7 +14,7 @@ import java.util.Date;
  * 
  * @author 朱素海
  * 
- * 职介者服务
+ * 职介者服务类，为职介者代理提供服务
  *
  */
 public class ParkService extends MementoService implements Park
@@ -271,7 +271,7 @@ public class ParkService extends MementoService implements Park
 		return authflag;
 	}
 	/**
-	 * 根据domain、node、sessionid 返回 节点
+	 * 根据domain、node、sessionid 获取对应的哈希值
 	 */
 	public ObjValue get(String domain, String node, String sessionid) throws RemoteException,ClosetoOverException
 	{
@@ -293,7 +293,9 @@ public class ParkService extends MementoService implements Park
 		}
 		return ov;
 	}
-	
+	/**
+	 * 根据domain、node、sesionId、version 获取最新的对象
+	 */
 	public ObjValue getLastest(String domain, String node, String sessionid, long version) throws RemoteException,ClosetoOverException
 	{
 		//lk.lock();

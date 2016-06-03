@@ -9,7 +9,13 @@ import java.util.ArrayList;
  */
 abstract class ParallelService
 {
+	
+	
 	abstract public void waitWorking(String host, int port, String workerType);
+	/**
+	 * 等待工作状态，指定工人类型
+	 * @param workerType 工人类型
+	 */
 	abstract public void waitWorking(String workerType);
 	
 	/*WorkerLocal[] getWorkersService(String workerType)

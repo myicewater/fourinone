@@ -1,5 +1,9 @@
 package com.fourinone;
-
+/**
+ * ObjectBean 实现类
+ * @author Administrator
+ *
+ */
 class ObjectBeanProxy implements ObjectBean{
 	Object obj;
 	Long vid;
@@ -19,13 +23,18 @@ class ObjectBeanProxy implements ObjectBean{
 		return name;
 	}
 	
+	/**
+	 * 获取domain值
+	 */
 	public String getDomain(){
 		if(name!=null)
 			return ParkObjValue.getDomainNode(name)[0];
 		else
 			return null;
 	}	
-		
+	/**
+	 * 获取node值
+	 */
 	public String getNode(){
 		if(name!=null)
 		{

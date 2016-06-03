@@ -31,7 +31,9 @@ public class ParkObjValue extends ObjValue
 		return obj;
 	}
 	/**
-	 * 根据domain、node获取节点
+	 * 根据domain、node获取对应的对象
+	 * <br>
+	 * 封装对象
 	 * @param domain
 	 * @param node
 	 * @return
@@ -258,7 +260,7 @@ public class ParkObjValue extends ObjValue
 		return checkGrammar(domain, node)&&obj!=null;
 	}
 	/**
-	 * 返回 domain.node 字符串
+	 * 返回 domain.node 拼接后的字符串
 	 * 如果node 为null 则返回domain
 	 * @param domain
 	 * @param node
@@ -268,7 +270,11 @@ public class ParkObjValue extends ObjValue
 		String domainnodekey = node==null?domain:domain+"."+node;
 		return domainnodekey;
 	}
-	
+	/**
+	 * 从domainnodekey获取domain[0] 和node[1]
+	 * @param domainnodekey
+	 * @return
+	 */
 	public static String[] getDomainNode(String domainnodekey){
 		//String[] keyarr = domainnodekey.split("\\.");
 		//System.out.println("getDomainNode domainnodekey:"+domainnodekey);

@@ -1,8 +1,15 @@
 package com.fourinone;
 
 import java.util.ArrayList;
-
+/**
+ * 职介者群组
+ * @author Administrator
+ *
+ */
 public class ParkGroup{
+	/**
+	 * 集群
+	 */
 	private ObjValue groups = new ObjValue();
 	//key--->server(bk)
 	public ParkGroup(ObjValue groups){
@@ -10,7 +17,8 @@ public class ParkGroup{
 		this.groups = groups;
 	}
 	/**
-	 * 初始化集群参数
+	 * 初始化职介者集群<br>
+	 * 通过时间来标志加入集群的先后
 	 */
 	private void initGroups()
 	{
@@ -49,7 +57,7 @@ public class ParkGroup{
 	}
 	*/
 	/***
-	 * 返回唯一Id，把时间戳转换成16进制，位数变短，包含了英文
+	 * 返回唯一key，把时间戳转换成16进制，位数变短，包含了英文
 	 * @return
 	 */
 	public static String getKeyId(){
@@ -62,6 +70,11 @@ public class ParkGroup{
 		return Long.decode("0x"+keyidarr[0])+"-"+Long.decode("0x"+keyidarr[1]);
 	}*/
 	
+	/**
+	 * 根据时间获取相应的server
+	 * @param keyId
+	 * @return
+	 */
 	public String[][] getServers(String keyId){
 		String[] keyidarr = keyId.split("-");
 		Long kt = Long.decode("0x"+keyidarr[0]);

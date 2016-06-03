@@ -2,7 +2,16 @@ package com.fourinone;
 
 import java.util.List;
 import java.io.Serializable;
-
+/**
+ * 
+ * 本地职介者接口
+ * 
+ * <br>
+ * 实现代理是@see ParkProxy
+ * 
+ * @author Administrator
+ *
+ */
 public interface ParkLocal
 {
 	/**
@@ -32,17 +41,23 @@ public interface ParkLocal
 	public ObjectBean create(String domain, String node, Serializable obj, boolean heartbeat);
 	public ObjectBean create(String domain, String node, Serializable obj, AuthPolicy auth, boolean heartbeat);
 	/**
-	 * 更新node
+	 * 更新domain/node 对应的对象，更新为obj
 	 * @param domain
 	 * @param node
 	 * @param obj
 	 * @return
 	 */
 	public ObjectBean update(String domain, String node, Serializable obj);
+	/**
+	 * 根据domain ，node 获取相应的对象
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public ObjectBean get(String domain, String node);
 	public ObjectBean getLastest(String domain, String node, ObjectBean ob);
 	/**
-	 * 获取最新domain
+	 * 获取domain想所有的对象
 	 * @param domain
 	 * @return
 	 */

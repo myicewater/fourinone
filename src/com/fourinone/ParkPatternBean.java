@@ -1,5 +1,13 @@
 package com.fourinone;
-
+/**
+ * 职介者式样 模范 bean，职介者信息存储bean
+ * 
+ * <br>
+ * 通过此bean可以创建一个职介者实例
+ * 
+ * @author Administrator
+ *
+ */
 public class ParkPatternBean
 {
 	String domain,node;

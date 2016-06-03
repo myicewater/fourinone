@@ -1,6 +1,7 @@
 package com.fourinone;
 /**
- * 对象Bean 类，继承Serializable 序列化接口
+ * 对象Bean 接口<br>
+ * 序列化
  * @author 朱素海
  *
  */
