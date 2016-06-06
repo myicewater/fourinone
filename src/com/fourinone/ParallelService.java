@@ -10,7 +10,12 @@ import java.util.ArrayList;
 abstract class ParallelService
 {
 	
-	
+	/**
+	 * 在host:port 上处于等待工作状态,设置自己 工人类型为workerType
+	 * @param host
+	 * @param port
+	 * @param workerType
+	 */
 	abstract public void waitWorking(String host, int port, String workerType);
 	/**
 	 * 等待工作状态，指定工人类型

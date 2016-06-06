@@ -177,7 +177,12 @@ public class ParkObjValue extends ObjValue
 		}
 		return ov;
 	}
-	
+	/**
+	 * 根据 domain 、node删除相应的节点
+	 * @param domain
+	 * @param node
+	 * @return
+	 */
 	public ObjValue removeNode(String domain, String node)
 	{
 		ObjValue ov = new ObjValue();

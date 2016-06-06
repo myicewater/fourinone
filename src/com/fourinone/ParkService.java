@@ -24,7 +24,14 @@ public class ParkService extends MementoService implements Park
 	//private Lock lk = new ReentrantLock();
 	private ReadWriteLock rwlk = new ReentrantReadWriteLock();
 	private ParkLeader pl = null;
-	
+	/**
+	 * 职介者服务，
+	 * @param host ip地址
+	 * @param port 端口
+	 * @param servers 服务群 host:port 数组
+	 * @param parkService 服务名称
+	 * @throws RemoteException
+	 */
 	public ParkService(String host, int port, String[][] servers, String parkService) throws RemoteException{
 		pl = new ParkLeader(host,port,servers,parkService);
 		pl.wantBeMaster(this);
@@ -322,7 +329,7 @@ public class ParkService extends MementoService implements Park
 		return getTheParkinfo();
 	}
 	/**
-	 * 获取协同服务信息
+	 * 获取职介者 服务信息
 	 * @return
 	 */
 	ObjValue getTheParkinfo()

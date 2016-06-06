@@ -45,7 +45,7 @@ public class BeanContext extends ServiceContext
 		return getPark(host, port, ConfigContext.getParkService(), servers);
 	}
 	/**
-	 * 根据配置文件获取协同服务（职介所）
+	 * 根据配置文件获取协同服务（职介者）
 	 * @return
 	 */
 	public static ParkLocal getPark(){
@@ -68,11 +68,15 @@ public class BeanContext extends ServiceContext
 	}
 	
 	/**
-	 * 启动职介所服务（协调服务），httpserver
-	 * @param host
+	 * 启动职介所服务（协调服务）<br>
+	 * rmi 远程调用<br>
+	 * 根据配置,启动InetServer
+	 * <br>
+	 * httpserver
+	 * @param host localhost:1888,localhost:1889
 	 * @param port
-	 * @param sn
-	 * @param servers
+	 * @param sn servername: ParkService
+	 * @param servers 多个host:port
 	 */
 	public static void startPark(String host, int port, String sn, String[][] servers)
 	{
@@ -88,7 +92,11 @@ public class BeanContext extends ServiceContext
 		}
 	}
 	/**
-	 * 根据ip:port启动职介所服务
+	 * 
+	 * 读取职介者服务名称<br>
+	 * 在 host:port 上启动职介者服务
+	 * 
+	 * 
 	 * @param host
 	 * @param port
 	 * @param servers
@@ -106,7 +114,9 @@ public class BeanContext extends ServiceContext
 	}
 	/**
 	 * 
-	 * 根据默认配置，启动职介所服务
+	 * 根据默认配置<SERVERS>localhost:1888,localhost:1889</SERVERS>
+	 * <br>
+	 * 启动职介所服务
 	 * 
 	 */
 	public static void startPark()//String configfile
@@ -115,7 +125,8 @@ public class BeanContext extends ServiceContext
 		startPark(parkcfg[0][0], Integer.parseInt(parkcfg[0][1]), parkcfg);
 	}
 	/**
-	 * 
+	 * 获取Inet配置信息 localhost:9080
+	 * <br>
 	 * 启动web app 服务
 	 * 
 	 */

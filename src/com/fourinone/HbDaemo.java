@@ -67,9 +67,15 @@ public class HbDaemo
 	}
 	
 	//run clear cache
+	/**
+	 * 执行清除任务
+	 * 初始化清除器
+	 * @param ps
+	 */
 	public static void runClearTask(ParkService ps){
 		if(clrTask==null)
 		{
+			//获取清楚周期,默认12
 			Double cpd = new Double(ConfigContext.getConfig("PARK","CLEARPERIOD",null,"12"));
 			if(cpd>0)
 			{
@@ -187,6 +193,9 @@ class ClearTask extends TimerTask
 		this.expl = expl;
 	}
 
+	/**
+	 * 清楚任务具体内容
+	 */
 	public void run()
 	{
 		//long expl = HbDaemo.ConfigContext.getSecTime(exp);

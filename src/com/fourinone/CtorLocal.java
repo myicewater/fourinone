@@ -14,6 +14,8 @@ public interface CtorLocal
 	 * 做到了最大灵活性
 	 * @param inhouse
 	 * @return
+	 * 
+	 * @implement WorkerServiceProxy-64 具体实现通过代理实现的
 	 */
 	public WareHouse giveTask(WareHouse inhouse);
 }

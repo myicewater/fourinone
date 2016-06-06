@@ -2,6 +2,9 @@ package com.fourinone;
 
 public abstract class WorkerParallel extends ParallelService
 {
+	/**
+	 * 是否进行并行运算标志
+	 */
 	protected int parallelPatternFlag = ConfigContext.getParallelPattern();
 	
 	/***
@@ -20,6 +23,9 @@ public abstract class WorkerParallel extends ParallelService
 			waitWorkingByService(host, port, workerType);
 	}
 	
+	/**
+	 * 进入等待工作装备,设置工人类型为workerType
+	 */
 	public void waitWorking(String workerType)
 	{
 		if(parallelPatternFlag==1)

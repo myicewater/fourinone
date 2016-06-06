@@ -10,9 +10,11 @@ class ServiceContext extends BeanService
 {
 	/**
 	 * 启动host:port 上服务
+	 * <br>
+	 * 创建rmi
 	 * @param host
-	 * @param port
-	 * @param sn
+	 * @param port 
+	 * @param sn 职介者服务名称
 	 * @param i
 	 */
 	static <I extends ParkActive> void startService(String host, int port, String sn, I i)

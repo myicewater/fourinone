@@ -11,6 +11,9 @@ import java.util.Random;
  */
 public abstract class Contractor extends ContractorParallel
 {
+	/**
+	 * 链式包工头的下一个
+	 */
 	private Contractor ctor;
 	WorkerLocal[] wks = null; 
 	/**

@@ -15,10 +15,16 @@ public class ParkLeader{
 	 * 是否是master（领导、主）
 	 */
 	boolean ismaster = false;
+	/**
+	 * 总是尝试成为master
+	 */
 	boolean alwaystry = false;
+	/**
+	 * master 的服务名称
+	 */
 	private String parkservicecfg = "ParkService";
 	/**
-	 * 当前职介者服务的 host：port
+	 * 标志该master的 host:port
 	 */
 	private String[] thisserver; //thishost,thisport;cur host for service and cur leader for proxy
 	/**
@@ -33,7 +39,13 @@ public class ParkLeader{
 		thisserver = new String[]{host, ""+port};
 		this.alwaystry = Boolean.valueOf(ConfigContext.getConfig("PARK","ALWAYSTRYLEADER",null,"false"));
 	}
-	
+	/**
+	 * 创建 职介者服务master（领导、主）
+	 * @param host master的host
+	 * @param port master的port
+	 * @param groupserver 职介者群组
+	 * @param parkservicecfg master的服务名称 "ParkService"
+	 */
 	ParkLeader(String host, int port, String[][] groupserver, String parkservicecfg){
 		this(host,port,parkservicecfg);
 		this.groupserver = groupserver;
@@ -175,6 +187,10 @@ public class ParkLeader{
 		return pk;
 	}*/
 	
+	/**
+	 * 获取职介者集群中其他 职介者
+	 * @return
+	 */
 	protected Park[] getOtherPark(){
 		ArrayList<Park> pklist = new ArrayList<Park>();
 		for(String[] sarr:groupserver)
@@ -218,16 +234,26 @@ public class ParkLeader{
 				return false;
 		}*/
 	}
-	
+	/**
+	 * 设置成为master
+	 * <br>
+	 * 逻辑:首先看其他职介者中有没有master,<br>
+	 * 如果没有master, <br>
+	 * 	&nbsp&nbsp&nbsp&nbsp如果有其他 职介者,则把任意一个信息赋给 pk
+	 *  把pk设成master
+	 * 如果存在master,则把其他 职介者中master 的信息拷贝到pk 
+	 * 
+	 * @param pk
+	 */
 	protected void wantBeMaster(Park pk){
 		LogUtil.info("", "", "wantBeMaster.............................");	
 		String[] sv = new String[2];
 		Park othermaster = getOtherMasterPark(sv);
-		if(othermaster==null){
+		if(othermaster==null){//没有找到其他 职介者中的master
 			LogUtil.info("", "", "get one of other parks for init parkInfo.........");
 			Park[] pks = getOtherPark();
 			if(pks.length>0)
-				setInitParkInfo(pks[0], pk);
+				setInitParkInfo(pks[0], pk);//将其他职介者中的一个 的信息 赋给 pk
 			setMaster(true,pk);
 		}
 		else{
@@ -236,6 +262,11 @@ public class ParkLeader{
 		}
 	}
 	
+	/**
+	 * 把toPk 的职介者信息设置成fromPk 职介者的信息
+	 * @param fromPk
+	 * @param toPk
+	 */
 	private void setInitParkInfo(Park fromPk, Park toPk)
 	{
 		try{
@@ -268,7 +299,7 @@ public class ParkLeader{
 	/**
 	 * 获取其他职介者中的master
 	 * @param sv
-	 * @return 有则返回Park，没有返回null
+	 * @return 有则返回Park，没有返回null,找到其他 职介者服务中的 master 则把master的server信息拷贝到 sv
 	 */
 	protected Park getOtherMasterPark(String[] sv){
 		Park pkmaster = null;
@@ -276,7 +307,7 @@ public class ParkLeader{
 			Park[] pks = getOtherPark();
 			for(Park pk:pks){
 				String[] ask = pk.askMaster();
-				if(ask!=null)
+				if(ask!=null)//找到了其他的master
 				{
 					pkmaster = pk;
 					//sv=ask;

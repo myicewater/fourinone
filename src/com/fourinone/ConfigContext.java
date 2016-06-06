@@ -198,6 +198,12 @@ public class ConfigContext
 		return getServerFromStr(servers);
 	}
 	
+	/**
+	 * 获取 PARK-SERVICE 对应的名称
+	 * <br>
+	 * <SERVICE>ParkService</SERVICE>
+	 * @return
+	 */
 	static String getParkService()
 	{
 		return getConfig("PARK","SERVICE",null);
@@ -217,7 +223,7 @@ public class ConfigContext
 		return getConfig("FTTP","SERVERS",null).split(":");
 	}
 	/**
-	 * 获取webapp 配置信息
+	 * 获取webapp 配置信息 localhost:9080
 	 * @return
 	 */
 	static String[] getInetConfig()
@@ -397,6 +403,11 @@ public class ConfigContext
 		return  dateStr;
 	}
 	
+	/**
+	 * 返回服务器地址端口数组
+	 * @param servers
+	 * @return
+	 */
 	static String[][] getServerFromStr(String servers)
 	{
 		String[] serverarr = servers.split(",");

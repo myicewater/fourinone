@@ -20,9 +20,9 @@ import javax.script.ScriptEngineManager;
 import javax.script.Compilable;
 import com.fourinone.FttpAdapter.FileProperty;
 /**
- * 协调服务
+ * 职介者 web inet服务
  * 
- * 所谓协调服务也就启动了一个HttpServer
+ * 
  * 
  * @author 朱素海
  *

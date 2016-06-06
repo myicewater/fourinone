@@ -1,7 +1,11 @@
 package com.fourinone;
 
 import java.rmi.RemoteException;
-
+/**
+ * 工人服务代理
+ * @author 朱素海
+ *
+ */
 public class WorkerServiceProxy extends PoolExector
 {
 	Worker wk;
@@ -61,11 +65,18 @@ public class WorkerServiceProxy extends PoolExector
 		}
 	}
 	
+	/**
+	 * 工头发放任务
+	 * @param inhouse
+	 * @return
+	 */
 	@Delegate(interfaceName="com.fourinone.CtorLocal",methodName="giveTask",policy=DelegatePolicy.Implements)
 	public WareHouse giveTaskServiceProxy(WareHouse inhouse){
 		return doTaskServiceProxy(inhouse);
 	}
-	
+	/**
+	 * 中断任务
+	 */
 	@Delegate(interfaceName="com.fourinone.WorkerLocal",methodName="interrupt",policy=DelegatePolicy.Implements)
 	public void cancel(){
 		try{
